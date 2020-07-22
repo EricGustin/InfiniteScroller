@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "upsideDownTube@4x.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
