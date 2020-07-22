@@ -12,6 +12,7 @@ import GameplayKit
 class GameScene: SKScene {
   
   private var background = [SKSpriteNode]()
+  private var player: SKSpriteNode!
   
   override func didMove(to view: SKView) {
     setUpNodes()
@@ -23,7 +24,12 @@ class GameScene: SKScene {
   }
   
   private func setUpNodes() {
-    
+    createBackground()
+    createGround()
+    createPlayer()
+  }
+  
+  private func createBackground() {
     //  Set up background
     for i in 0..<2 {
       background.append(SKSpriteNode(imageNamed: "background@4x"))
@@ -35,9 +41,9 @@ class GameScene: SKScene {
       background[i].position = CGPoint(x: CGFloat(i)*background[i].frame.width, y: 0)
       self.addChild(background[i])
     }
-    
-    
-    
+  }
+  
+  private func createGround() {
     //  Set up ground
     for i in 0..<2 {
       let groundImage = SKSpriteNode(imageNamed: "ground@4x")
@@ -49,6 +55,19 @@ class GameScene: SKScene {
       
       self.addChild(groundImage)
     }
+  }
+  
+  private func createPlayer() {
+    player = SKSpriteNode(imageNamed: "player@4x")
+    player.name = "Player"
+    player.zPosition = 0
+    player.setScale(CGFloat(0.25))
+    player.position = CGPoint(x: -(scene?.frame.width)!/12, y: 0)
+    let transform = SKTransformNode()
+    transform.addChild(player)
+    
+    scene?.addChild(transform)
+    transform.yRotation = 5*CGFloat.pi/12
   }
   
   private func moveGround() {
@@ -64,12 +83,7 @@ class GameScene: SKScene {
     self.enumerateChildNodes(withName: "Background") { (node, error) in
       node.position.x -= 0.1
       if node.position.x < -node.frame.width {
-//        print(node.position.x)
-//        print(self.scene!.size.width)
-//        print(((self.scene?.size.width)!*2))
-//        print()
         node.position.x += (node.frame.width*2)
-//          ((self.scene?.size.width)!*2)
       }
     }
   }
