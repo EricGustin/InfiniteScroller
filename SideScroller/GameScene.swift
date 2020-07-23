@@ -49,6 +49,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       movePlayer()
       updateScore()
     }
+    if game.isOver {
+      game.isOver = false
+      scoreLabel?.removeFromSuperview()
+      let gameScene = GameScene(size: self.size)
+      gameScene.scaleMode = self.scaleMode
+      gameScene.anchorPoint = self.anchorPoint
+      let animation = SKTransition.fade(withDuration: 1.0)
+      self.view?.presentScene(gameScene, transition: animation)
+    }
+  }
+  
+  deinit {
+    
   }
   
   private func setUpNodes() {
@@ -267,15 +280,4 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       }
     }
   }
-  
-  override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-  }
-  
-  override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-  }
-  
-  override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-  }
-
-  
 }

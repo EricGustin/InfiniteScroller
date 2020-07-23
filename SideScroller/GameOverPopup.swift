@@ -7,31 +7,43 @@
 //
 
 import UIKit
+import SpriteKit
 
 class GameOverPopup : UIView {
   
   private let container: UIView = {
     let container = UIView()
     container.translatesAutoresizingMaskIntoConstraints = false
-    container.backgroundColor = .white
+    container.backgroundColor = UIColor(red: 253/255, green: 217/255, blue: 181/255, alpha: 1.0)
     container.layer.cornerRadius = 12
     return container
   }()
   
   private let scoreLabel: UILabel = {
     let label = UILabel()
-    label.text = "Score: "
+    label.text = "SCORE: "
     label.font = UIFont(name: "Cartooncookies", size: 25)
+    label.textColor = .black
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
   }()
   
   private let bestScoreLabel: UILabel = {
     let label = UILabel()
-    label.text = "Best Score: "
+    label.text = "BEST SCORE: "
     label.font = UIFont(name: "Cartooncookies", size: 25)
+    label.textColor = .black
     label.translatesAutoresizingMaskIntoConstraints = false
     return label
+  }()
+  
+  private let restartButton: UIButton = {
+    let button = UIButton()
+    button.setTitle("RESTART", for: .normal)
+    button.titleLabel?.font = UIFont(name: "Cartooncookies", size: 32)
+    button.setTitleColor(.black, for: .normal)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    return button
   }()
   
   private var score: Int?
@@ -85,8 +97,11 @@ class GameOverPopup : UIView {
     container.addSubview(bestScoreLabel)
     bestScoreLabel.centerXAnchor.constraint(equalTo: container.centerXAnchor).isActive = true
     bestScoreLabel.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor, constant: 10).isActive = true
-    
-    
+
+    restartButton.addTarget(self, action: #selector(animateOut), for: .touchUpInside)
+    container.addSubview(restartButton)
+    restartButton.centerXAnchor.constraint(equalTo: container.centerXAnchor).isActive = true
+    restartButton.topAnchor.constraint(equalTo: bestScoreLabel.bottomAnchor, constant: 10).isActive = true
   }
   
   private func animateIn() {
@@ -95,4 +110,17 @@ class GameOverPopup : UIView {
       self.container.transform = .identity
     }, completion: nil)
   }
+  
+  @objc func animateOut() {
+    UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: .curveEaseIn, animations: {
+      self.container.transform = CGAffineTransform(translationX: 0, y: -self.frame.height/12)
+      self.alpha = 0
+    }) { (complete) in
+      if complete {
+        self.removeFromSuperview()
+        game.isOver = true
+      }
+    }
+  }
+  
 }
