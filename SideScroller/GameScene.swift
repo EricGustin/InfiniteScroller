@@ -19,6 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   private var topObstacles: [SKSpriteNode] = []
   
   private var isGamePaused = false
+  private var isAnimatingDeath = false
   
   private var playerTextureAtlas = SKTextureAtlas()
   private var playerTextureArray = [SKTexture]()
@@ -41,7 +42,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   }
   
   override func update(_ currentTime: TimeInterval) {
-    if !isGamePaused {
+    if !isGamePaused  {
       moveGround()
       moveBackground()
       moveObstacles()
@@ -100,7 +101,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   private func createPlayer() {
     player = SKSpriteNode(imageNamed: playerTextureAtlas.textureNames[0])
     player.name = "Player"
-    player.zPosition = 0
+    player.zPosition = 1
     player.setScale(CGFloat(0.2))
     player.position = CGPoint(x: -(scene?.frame.width)!/12, y: 0)
     
@@ -108,6 +109,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let offsetY = player.size.height * player.anchorPoint.y
     player.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: offsetX*1.1, height: offsetY*1.25), center: CGPoint(x: player.frame.maxY - player.frame.width*0.4, y: player.frame.midY))
     player.physicsBody?.affectedByGravity = true
+    player.physicsBody?.restitution = 0.0
     player.physicsBody?.contactTestBitMask = player.physicsBody?.collisionBitMask ?? 0
     player.run(SKAction.repeatForever(SKAction.animate(with: playerTextureArray, timePerFrame: 0.15)))
     
@@ -149,7 +151,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   private func moveGround() {
     self.enumerateChildNodes(withName: "Ground") { (node, error) in
-      node.position.x -= 3
+      node.position.x -= 5
       if node.position.x < -(self.scene?.size.width)! {
         node.position.x += ((self.scene?.size.width)!)*2
       }
@@ -168,7 +170,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   private func moveObstacles() {
     let random = CGFloat.random(in: 0.25...0.75)
     self.enumerateChildNodes(withName: "BottomObstacle") { (node, error) in
-      node.position.x -= 3
+      node.position.x -= 4
       if node.position.x < -((self.scene?.size.width)!/2) - node.frame.width/2 {
         node.position.x = (self.scene?.size.width)!
         node.yScale = random
@@ -176,7 +178,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       }
     }
     self.enumerateChildNodes(withName: "TopObstacle") { (node, error) in
-      node.position.x -= 3
+      node.position.x -= 4
       if node.position.x < -((self.scene?.size.width)!/2) - node.frame.width/2 {
         node.position.x = (self.scene?.size.width)!
         node.yScale = 0.75 - random
@@ -191,13 +193,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   private func updateScore() {
     self.enumerateChildNodes(withName: "BottomObstacle") { (node, error) in
-      if abs(node.position.x - self.player.position.x) <= 1 {
+      if abs(node.position.x - self.player.position.x) <= 2 {
         self.score! += 1
         self.scoreLabel?.text = "\(self.score ?? 0)"
       }
     }
   }
-  
+    
   private func setUpGestureRecognizers() {
     physicsWorld.contactDelegate = self
     let slideUp = UISwipeGestureRecognizer(target: self, action: #selector(changeGravity))
@@ -209,12 +211,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   }
   
   private func collision(between player: SKNode, object: SKNode) {
+    if !isGamePaused { showPlayAgainPopup() }
     isGamePaused = true
-    endGame()
+    if object.name == "Ground" {
+      player.physicsBody?.isResting = true  // Ensures that the player will only make contact with the ground once
+      endGame()
+    }
+    if object.name == "BottomObstacle" || object.name == "TopObstacle" {
+      physicsWorld.gravity = CGVector(dx: 0, dy: -9.8)
+      player.run(SKAction.rotate(byAngle: -CGFloat.pi/2, duration: 0.7))
+      for i in 0..<bottomObstacles.count {
+        bottomObstacles[i].physicsBody = nil
+        topObstacles[i].physicsBody = nil
+      }
+    }
   }
   
   private func endGame() {
     player.removeAllActions()
+  }
+  
+  private func showPlayAgainPopup() {
+    let playAgainPopup = GameOverPopup(score: score)
+    self.view?.addSubview(playAgainPopup)
   }
   
   
@@ -240,11 +259,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       guard sender.view != nil else { return }
       if sender.direction == .up {
         print("up")
-        playerYVelocity = 8.0
+        playerYVelocity = 13.0
       }
       if sender.direction == .down {
         print("down")
-        playerYVelocity = -8.0
+        playerYVelocity = -13.0
       }
     }
   }

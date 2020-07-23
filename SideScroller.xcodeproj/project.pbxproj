@@ -18,6 +18,7 @@
 		FAD5466824C8CF2100D7BE78 /* playerFlying.atlas in Resources */ = {isa = PBXBuildFile; fileRef = FAD5466724C8CF2100D7BE78 /* playerFlying.atlas */; };
 		FAD5466D24C93D0F00D7BE78 /* Cartoon cookies.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAD5466C24C93D0F00D7BE78 /* Cartoon cookies.ttf */; };
 		FAD5466F24C93D1D00D7BE78 /* Bubblegum.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAD5466E24C93D1D00D7BE78 /* Bubblegum.ttf */; };
+		FAD5467124C94B6B00D7BE78 /* GameOverPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5467024C94B6B00D7BE78 /* GameOverPopup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		FAD5466724C8CF2100D7BE78 /* playerFlying.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = playerFlying.atlas; sourceTree = "<group>"; };
 		FAD5466C24C93D0F00D7BE78 /* Cartoon cookies.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cartoon cookies.ttf"; sourceTree = "<group>"; };
 		FAD5466E24C93D1D00D7BE78 /* Bubblegum.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bubblegum.ttf; sourceTree = "<group>"; };
+		FAD5467024C94B6B00D7BE78 /* GameOverPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPopup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				FAD5465524C7DF3800D7BE78 /* Assets.xcassets */,
 				FAD5465724C7DF3800D7BE78 /* LaunchScreen.storyboard */,
 				FAD5465A24C7DF3800D7BE78 /* Info.plist */,
+				FAD5467024C94B6B00D7BE78 /* GameOverPopup.swift */,
 			);
 			path = SideScroller;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAD5467124C94B6B00D7BE78 /* GameOverPopup.swift in Sources */,
 				FAD5464F24C7DF3600D7BE78 /* GameScene.swift in Sources */,
 				FAD5465124C7DF3600D7BE78 /* GameViewController.swift in Sources */,
 				FAD5464924C7DF3600D7BE78 /* AppDelegate.swift in Sources */,
