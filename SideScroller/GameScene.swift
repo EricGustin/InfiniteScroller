@@ -6,6 +6,7 @@
 //  Copyright © 2020 Eric Gustin. All rights reserved.
 //
 
+import UIKit
 import SpriteKit
 import GameplayKit
 
@@ -24,6 +25,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   private var topOfGroundY: CGFloat!
   
+  private var scoreLabel: UILabel?
+  private var score: Int?
+  
   override func didMove(to view: SKView) {
     playerTextureAtlas = SKTextureAtlas(named: "playerFlying")
     for i in 1...playerTextureAtlas.textureNames.count {
@@ -32,6 +36,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     topOfGroundY = 6*(self.scene?.size.height)!/14
     physicsWorld.gravity = .zero
     setUpNodes()
+    setUpSubviews()
     setUpGestureRecognizers()
   }
   
@@ -41,6 +46,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       moveBackground()
       moveObstacles()
       movePlayer()
+      updateScore()
     }
   }
   
@@ -49,6 +55,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     createGround()
     createPlayer()
     createObstacles()
+  }
+  
+  private func setUpSubviews() {
+    score = 0
+    scoreLabel = UILabel()
+    scoreLabel?.text = "\(score ?? 0)"
+    scoreLabel?.font = UIFont(name: "Cartooncookies", size: 49)
+    scoreLabel?.translatesAutoresizingMaskIntoConstraints = false
+    view?.addSubview(scoreLabel!)
+    scoreLabel?.centerXAnchor.constraint(equalTo: view!.centerXAnchor).isActive = true
+    scoreLabel?.topAnchor.constraint(equalTo: view!.topAnchor, constant: UIScreen.main.bounds.height/8).isActive = true
   }
   
   private func createBackground() {
@@ -86,7 +103,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     player.zPosition = 0
     player.setScale(CGFloat(0.2))
     player.position = CGPoint(x: -(scene?.frame.width)!/12, y: 0)
-    player.physicsBody = SKPhysicsBody(circleOfRadius: player.frame.width/2)
+    
+    let offsetX = player.size.width * player.anchorPoint.x
+    let offsetY = player.size.height * player.anchorPoint.y
+    player.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: offsetX*1.1, height: offsetY*1.25), center: CGPoint(x: player.frame.maxY - player.frame.width*0.4, y: player.frame.midY))
     player.physicsBody?.affectedByGravity = true
     player.physicsBody?.contactTestBitMask = player.physicsBody?.collisionBitMask ?? 0
     player.run(SKAction.repeatForever(SKAction.animate(with: playerTextureArray, timePerFrame: 0.15)))
@@ -103,9 +123,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       topObstacles[i].xScale = 1.75
       topObstacles[i].size = CGSize(width: topObstacles[i].frame.width, height: (self.scene?.size.height)!)
       topObstacles[i].yScale = 0.75 - randomYScale
+      topObstacles[i].physicsBody?.isDynamic = false
       topObstacles[i].zPosition = 0
       topObstacles[i].name = "TopObstacle"
       topObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: (self.scene?.size.height)!/2 - topObstacles[i].frame.height/2)
+      topObstacles[i].physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: topObstacles[i].frame.width/6, height: topObstacles[i].frame.height))
+      topObstacles[i].physicsBody?.affectedByGravity = false
+      topObstacles[i].physicsBody?.isDynamic = false
       scene?.addChild(topObstacles[i])
       
       bottomObstacles.append(SKSpriteNode(imageNamed: "tube@4x"))
@@ -115,6 +139,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       bottomObstacles[i].zPosition = 0
       bottomObstacles[i].name = "BottomObstacle"
       bottomObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: bottomObstacles[i].size.height/2-6*(self.scene?.size.height)!/14)
+      bottomObstacles[i].physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: bottomObstacles[i].frame.width/6, height: bottomObstacles[i].frame.height))
+      bottomObstacles[i].physicsBody?.affectedByGravity = false
+      bottomObstacles[i].physicsBody?.isDynamic = false
       scene?.addChild(bottomObstacles[i])
     }
 
@@ -162,6 +189,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     player.position.y += CGFloat(playerYVelocity)
   }
   
+  private func updateScore() {
+    self.enumerateChildNodes(withName: "BottomObstacle") { (node, error) in
+      if abs(node.position.x - self.player.position.x) <= 1 {
+        self.score! += 1
+        self.scoreLabel?.text = "\(self.score ?? 0)"
+      }
+    }
+  }
+  
   private func setUpGestureRecognizers() {
     physicsWorld.contactDelegate = self
     let slideUp = UISwipeGestureRecognizer(target: self, action: #selector(changeGravity))
@@ -173,15 +209,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   }
   
   private func collision(between player: SKNode, object: SKNode) {
-    if object.name == "Ground" {
-      pauseGame()
-    }
+    isGamePaused = true
+    endGame()
   }
   
-  private func pauseGame() {
-    isGamePaused = true
+  private func endGame() {
     player.removeAllActions()
   }
+  
   
   func didBegin(_ contact: SKPhysicsContact) {
     guard let nodeA = contact.bodyA.node else { return }

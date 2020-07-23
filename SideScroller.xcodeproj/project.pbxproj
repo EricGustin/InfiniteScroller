@@ -16,6 +16,8 @@
 		FAD5465624C7DF3800D7BE78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAD5465524C7DF3800D7BE78 /* Assets.xcassets */; };
 		FAD5465924C7DF3800D7BE78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAD5465724C7DF3800D7BE78 /* LaunchScreen.storyboard */; };
 		FAD5466824C8CF2100D7BE78 /* playerFlying.atlas in Resources */ = {isa = PBXBuildFile; fileRef = FAD5466724C8CF2100D7BE78 /* playerFlying.atlas */; };
+		FAD5466D24C93D0F00D7BE78 /* Cartoon cookies.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAD5466C24C93D0F00D7BE78 /* Cartoon cookies.ttf */; };
+		FAD5466F24C93D1D00D7BE78 /* Bubblegum.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAD5466E24C93D1D00D7BE78 /* Bubblegum.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		FAD5465824C7DF3800D7BE78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAD5465A24C7DF3800D7BE78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAD5466724C8CF2100D7BE78 /* playerFlying.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = playerFlying.atlas; sourceTree = "<group>"; };
+		FAD5466C24C93D0F00D7BE78 /* Cartoon cookies.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cartoon cookies.ttf"; sourceTree = "<group>"; };
+		FAD5466E24C93D1D00D7BE78 /* Bubblegum.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bubblegum.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 		FAD5464724C7DF3600D7BE78 /* SideScroller */ = {
 			isa = PBXGroup;
 			children = (
+				FAD5466924C935D200D7BE78 /* Fonts */,
 				FAD5466724C8CF2100D7BE78 /* playerFlying.atlas */,
 				FAD5464824C7DF3600D7BE78 /* AppDelegate.swift */,
 				FAD5464A24C7DF3600D7BE78 /* GameScene.sks */,
@@ -74,6 +79,15 @@
 				FAD5465A24C7DF3800D7BE78 /* Info.plist */,
 			);
 			path = SideScroller;
+			sourceTree = "<group>";
+		};
+		FAD5466924C935D200D7BE78 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FAD5466E24C93D1D00D7BE78 /* Bubblegum.ttf */,
+				FAD5466C24C93D0F00D7BE78 /* Cartoon cookies.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +152,9 @@
 				FAD5464B24C7DF3600D7BE78 /* GameScene.sks in Resources */,
 				FAD5465624C7DF3800D7BE78 /* Assets.xcassets in Resources */,
 				FAD5465924C7DF3800D7BE78 /* LaunchScreen.storyboard in Resources */,
+				FAD5466D24C93D0F00D7BE78 /* Cartoon cookies.ttf in Resources */,
 				FAD5464D24C7DF3600D7BE78 /* Actions.sks in Resources */,
+				FAD5466F24C93D1D00D7BE78 /* Bubblegum.ttf in Resources */,
 				FAD5466824C8CF2100D7BE78 /* playerFlying.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
