@@ -18,6 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   private var bottomObstacles: [SKSpriteNode] = []
   private var topObstacles: [SKSpriteNode] = []
   
+  private var isGameBegan = false
   private var isGamePaused = false
   private var isAnimatingDeath = false
   
@@ -43,11 +44,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   override func update(_ currentTime: TimeInterval) {
     if !isGamePaused  {
+      if isGameBegan {
+        moveObstacles()
+        updateScore()
+      }
       moveGround()
       moveBackground()
-      moveObstacles()
       movePlayer()
-      updateScore()
     }
     if game.isOver {
       game.isOver = false
@@ -68,7 +71,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     createBackground()
     createGround()
     createPlayer()
-    createObstacles()
+    // obstacles created after the first click
   }
   
   private func setUpSubviews() {
@@ -76,6 +79,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     scoreLabel = UILabel()
     scoreLabel?.text = "\(score ?? 0)"
     scoreLabel?.font = UIFont(name: "Cartooncookies", size: 49)
+    scoreLabel?.textColor = .black
     scoreLabel?.translatesAutoresizingMaskIntoConstraints = false
     view?.addSubview(scoreLabel!)
     scoreLabel?.centerXAnchor.constraint(equalTo: view!.centerXAnchor).isActive = true
@@ -120,7 +124,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let offsetX = player.size.width * player.anchorPoint.x
     let offsetY = player.size.height * player.anchorPoint.y
-    player.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: offsetX*1.1, height: offsetY*1.25), center: CGPoint(x: player.frame.maxY - player.frame.width*0.4, y: player.frame.midY))
+    player.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: offsetX*1.08, height: offsetY*1.25), center: CGPoint(x: player.frame.maxY - player.frame.width*0.38, y: player.frame.midY))
     player.physicsBody?.affectedByGravity = true
     player.physicsBody?.restitution = 0.0
     player.physicsBody?.contactTestBitMask = player.physicsBody?.collisionBitMask ?? 0
@@ -224,7 +228,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   }
   
   private func collision(between player: SKNode, object: SKNode) {
-    if !isGamePaused { showPlayAgainPopup() }
+    if !isGamePaused {
+      scoreLabel?.isHidden = true
+      showPlayAgainPopup()
+    }
     isGamePaused = true
     if object.name == "Ground" {
       player.physicsBody?.isResting = true  // Ensures that the player will only make contact with the ground once
@@ -261,6 +268,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   }
   
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    if !isGameBegan {
+      isGameBegan = true
+      createObstacles()
+    }
     if !isGamePaused {
       physicsWorld.gravity = CGVector(dx: 0, dy: 0)
       playerYVelocity = 0

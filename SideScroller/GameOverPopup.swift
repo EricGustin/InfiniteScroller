@@ -16,6 +16,9 @@ class GameOverPopup : UIView {
     container.translatesAutoresizingMaskIntoConstraints = false
     container.backgroundColor = UIColor(red: 253/255, green: 217/255, blue: 181/255, alpha: 1.0)
     container.layer.cornerRadius = 12
+    container.layer.borderColor = UIColor.black.cgColor
+    container.layer.borderWidth = 1.0
+    
     return container
   }()
   
@@ -82,26 +85,34 @@ class GameOverPopup : UIView {
   
   private func setUpSubviews() {
     self.addSubview(container)
-    container.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-    container.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-    container.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7).isActive = true
-    containerInitialHeight = container.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.25)
-    containerInitialHeight.isActive = true
+//    container.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+//    container.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+//    container.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7).isActive = true
+//    containerInitialHeight = container.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.25)
+//    containerInitialHeight.isActive = true
     
     scoreLabel.text?.append("\(score ?? 0)")
     container.addSubview(scoreLabel)
-    scoreLabel.centerXAnchor.constraint(equalTo: container.centerXAnchor).isActive = true
-    scoreLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 0.7*self.frame.width/8).isActive = true
+    scoreLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+//    scoreLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 0.7*self.frame.width/8).isActive = true
+    scoreLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 3*UIScreen.main.bounds.height/8).isActive = true
     
     bestScoreLabel.text?.append("\(bestScore)")
     container.addSubview(bestScoreLabel)
-    bestScoreLabel.centerXAnchor.constraint(equalTo: container.centerXAnchor).isActive = true
+    bestScoreLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     bestScoreLabel.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor, constant: 10).isActive = true
 
     restartButton.addTarget(self, action: #selector(animateOut), for: .touchUpInside)
     container.addSubview(restartButton)
-    restartButton.centerXAnchor.constraint(equalTo: container.centerXAnchor).isActive = true
+    restartButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     restartButton.topAnchor.constraint(equalTo: bestScoreLabel.bottomAnchor, constant: 10).isActive = true
+
+    container.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+    container.topAnchor.constraint(equalTo: scoreLabel.topAnchor, constant: -10).isActive = true
+    container.bottomAnchor.constraint(equalTo: restartButton.bottomAnchor, constant: 10).isActive = true
+    container.leadingAnchor.constraint(equalTo: bestScoreLabel.leadingAnchor, constant: -10).isActive = true
+    container.trailingAnchor.constraint(equalTo: bestScoreLabel.trailingAnchor, constant: 10).isActive = true
+    
   }
   
   private func animateIn() {
