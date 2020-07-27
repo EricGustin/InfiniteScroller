@@ -196,6 +196,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         node.yScale = random
         node.position.y = node.frame.height/2-self.topOfGroundY
       }
+      if self.player.position.y > (self.scene?.frame.maxY)! && abs(node.position.x - self.player.position.x) <= 2  {
+        self.collision(between: self.player, object: node)
+      }
     }
     self.enumerateChildNodes(withName: "TopObstacle") { (node, error) in
       node.position.x -= 4
