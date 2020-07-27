@@ -18,6 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   private var background = [SKSpriteNode]()
   private var player: SKSpriteNode!
   private var playerYVelocity: Double = 0
+  private var otherObjectsSpeed: Double = 5
   private var bottomObstacles: [SKSpriteNode] = []
   private var topObstacles: [SKSpriteNode] = []
   
@@ -171,7 +172,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   private func moveGround() {
     self.enumerateChildNodes(withName: "Ground") { (node, error) in
-      node.position.x -= 5
+      node.position.x -= CGFloat(self.otherObjectsSpeed)
       if node.position.x < -(self.scene?.size.width)! {
         node.position.x += ((self.scene?.size.width)!)*2
       }
@@ -190,7 +191,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   private func moveObstacles() {
     let random = CGFloat.random(in: 0.25...0.75)
     self.enumerateChildNodes(withName: "BottomObstacle") { (node, error) in
-      node.position.x -= 4
+      node.position.x -= CGFloat(self.otherObjectsSpeed)
       if node.position.x < -((self.scene?.size.width)!/2) - node.frame.width/2 {
         node.position.x = (self.scene?.size.width)!
         node.yScale = random
@@ -201,13 +202,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       }
     }
     self.enumerateChildNodes(withName: "TopObstacle") { (node, error) in
-      node.position.x -= 4
+      node.position.x -= CGFloat(self.otherObjectsSpeed)
       if node.position.x < -((self.scene?.size.width)!/2) - node.frame.width/2 {
         node.position.x = (self.scene?.size.width)!
         node.yScale = 0.75 - random
         node.position.y = (self.scene?.size.height)!/2 - node.frame.height/2
       }
     }
+    print(self.otherObjectsSpeed)
   }
   
   private func movePlayer() {
@@ -216,9 +218,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   private func updateScore() {
     self.enumerateChildNodes(withName: "BottomObstacle") { (node, error) in
-      if abs(node.position.x - self.player.position.x) <= 2 {
+      if abs(node.position.x - self.player.position.x) <= CGFloat(self.otherObjectsSpeed/2) {
         self.score! += 1
         self.scoreLabel?.text = "\(self.score ?? 0)"
+        self.otherObjectsSpeed += 0.04
       }
     }
   }
@@ -300,11 +303,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       guard sender.view != nil else { return }
       if sender.direction == .up {
         print("up")
-        playerYVelocity = 13.0
+        playerYVelocity = 16.25 + Double(score!)*0.13
       }
       if sender.direction == .down {
         print("down")
-        playerYVelocity = -13.0
+        playerYVelocity = -16.25 - Double(score!)*0.13
       }
     }
   }
