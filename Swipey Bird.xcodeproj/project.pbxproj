@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FAA276AB24CF6AFC0056EDF1 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */; };
 		FAD5464924C7DF3600D7BE78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5464824C7DF3600D7BE78 /* AppDelegate.swift */; };
 		FAD5464B24C7DF3600D7BE78 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAD5464A24C7DF3600D7BE78 /* GameScene.sks */; };
 		FAD5464D24C7DF3600D7BE78 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAD5464C24C7DF3600D7BE78 /* Actions.sks */; };
@@ -23,7 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FAD5464524C7DF3600D7BE78 /* SideScroller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SideScroller.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		FAD5464524C7DF3600D7BE78 /* Swipey Bird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swipey Bird.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAD5464824C7DF3600D7BE78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAD5464A24C7DF3600D7BE78 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		FAD5464C24C7DF3600D7BE78 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -45,29 +47,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA276AB24CF6AFC0056EDF1 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FAA276A924CF6AFC0056EDF1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FAD5463C24C7DF3600D7BE78 = {
 			isa = PBXGroup;
 			children = (
-				FAD5464724C7DF3600D7BE78 /* SideScroller */,
+				FAD5464724C7DF3600D7BE78 /* Swipey Bird */,
 				FAD5464624C7DF3600D7BE78 /* Products */,
+				FAA276A924CF6AFC0056EDF1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		FAD5464624C7DF3600D7BE78 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FAD5464524C7DF3600D7BE78 /* SideScroller.app */,
+				FAD5464524C7DF3600D7BE78 /* Swipey Bird.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FAD5464724C7DF3600D7BE78 /* SideScroller */ = {
+		FAD5464724C7DF3600D7BE78 /* Swipey Bird */ = {
 			isa = PBXGroup;
 			children = (
 				FAD5466924C935D200D7BE78 /* Fonts */,
@@ -84,7 +96,7 @@
 				FAD5467024C94B6B00D7BE78 /* GameOverPopup.swift */,
 				FAD5467224C971AF00D7BE78 /* GameStatus.swift */,
 			);
-			path = SideScroller;
+			path = "Swipey Bird";
 			sourceTree = "<group>";
 		};
 		FAD5466924C935D200D7BE78 /* Fonts */ = {
@@ -99,9 +111,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FAD5464424C7DF3600D7BE78 /* SideScroller */ = {
+		FAD5464424C7DF3600D7BE78 /* Swipey Bird */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FAD5465D24C7DF3800D7BE78 /* Build configuration list for PBXNativeTarget "SideScroller" */;
+			buildConfigurationList = FAD5465D24C7DF3800D7BE78 /* Build configuration list for PBXNativeTarget "Swipey Bird" */;
 			buildPhases = (
 				FAD5464124C7DF3600D7BE78 /* Sources */,
 				FAD5464224C7DF3600D7BE78 /* Frameworks */,
@@ -111,9 +123,9 @@
 			);
 			dependencies = (
 			);
-			name = SideScroller;
+			name = "Swipey Bird";
 			productName = SideScroller;
-			productReference = FAD5464524C7DF3600D7BE78 /* SideScroller.app */;
+			productReference = FAD5464524C7DF3600D7BE78 /* Swipey Bird.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -131,7 +143,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FAD5464024C7DF3600D7BE78 /* Build configuration list for PBXProject "SideScroller" */;
+			buildConfigurationList = FAD5464024C7DF3600D7BE78 /* Build configuration list for PBXProject "Swipey Bird" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -144,7 +156,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FAD5464424C7DF3600D7BE78 /* SideScroller */,
+				FAD5464424C7DF3600D7BE78 /* Swipey Bird */,
 			);
 		};
 /* End PBXProject section */
@@ -322,14 +334,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X6KK3Y5QZJ;
-				INFOPLIST_FILE = SideScroller/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				INFOPLIST_FILE = "Swipey Bird/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.eric.SideScroller;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.eric.SwipeyBird;
+				PRODUCT_NAME = "Swipey Bird";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -341,14 +353,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X6KK3Y5QZJ;
-				INFOPLIST_FILE = SideScroller/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				INFOPLIST_FILE = "Swipey Bird/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.eric.SideScroller;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.eric.SwipeyBird;
+				PRODUCT_NAME = "Swipey Bird";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -357,7 +369,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FAD5464024C7DF3600D7BE78 /* Build configuration list for PBXProject "SideScroller" */ = {
+		FAD5464024C7DF3600D7BE78 /* Build configuration list for PBXProject "Swipey Bird" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FAD5465B24C7DF3800D7BE78 /* Debug */,
@@ -366,7 +378,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FAD5465D24C7DF3800D7BE78 /* Build configuration list for PBXNativeTarget "SideScroller" */ = {
+		FAD5465D24C7DF3800D7BE78 /* Build configuration list for PBXNativeTarget "Swipey Bird" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FAD5465E24C7DF3800D7BE78 /* Debug */,

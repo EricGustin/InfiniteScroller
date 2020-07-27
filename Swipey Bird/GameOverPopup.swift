@@ -8,8 +8,11 @@
 
 import UIKit
 import SpriteKit
+import GameKit
 
-class GameOverPopup : UIView {
+class GameOverPopup : UIView, GKGameCenterControllerDelegate {
+  
+  let LEADERBOARD_ID = "com.eric.SwipeyBird"
   
   private let container: UIView = {
     let container = UIView()
@@ -43,6 +46,15 @@ class GameOverPopup : UIView {
   private let restartButton: UIButton = {
     let button = UIButton()
     button.setTitle("RESTART", for: .normal)
+    button.titleLabel?.font = UIFont(name: "Cartooncookies", size: 32)
+    button.setTitleColor(.black, for: .normal)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    return button
+  }()
+  
+  private let leaderboardButton: UIButton = {
+    let button = UIButton()
+    button.setTitle("LEADERBOARD", for: .normal)
     button.titleLabel?.font = UIFont(name: "Cartooncookies", size: 32)
     button.setTitleColor(.black, for: .normal)
     button.translatesAutoresizingMaskIntoConstraints = false
@@ -85,16 +97,10 @@ class GameOverPopup : UIView {
   
   private func setUpSubviews() {
     self.addSubview(container)
-//    container.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-//    container.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-//    container.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.7).isActive = true
-//    containerInitialHeight = container.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.25)
-//    containerInitialHeight.isActive = true
     
     scoreLabel.text?.append("\(score ?? 0)")
     container.addSubview(scoreLabel)
     scoreLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-//    scoreLabel.topAnchor.constraint(equalTo: container.topAnchor, constant: 0.7*self.frame.width/8).isActive = true
     scoreLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 3*UIScreen.main.bounds.height/8).isActive = true
     
     bestScoreLabel.text?.append("\(bestScore)")
@@ -107,12 +113,26 @@ class GameOverPopup : UIView {
     restartButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     restartButton.topAnchor.constraint(equalTo: bestScoreLabel.bottomAnchor, constant: 10).isActive = true
 
+    leaderboardButton.addTarget(self, action: #selector(leaderboardButtonClicked), for: .touchUpInside)
+    container.addSubview(leaderboardButton)
+    leaderboardButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+    leaderboardButton.topAnchor.constraint(equalTo: restartButton.bottomAnchor, constant: 10).isActive = true
+    
     container.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     container.topAnchor.constraint(equalTo: scoreLabel.topAnchor, constant: -10).isActive = true
-    container.bottomAnchor.constraint(equalTo: restartButton.bottomAnchor, constant: 10).isActive = true
-    container.leadingAnchor.constraint(equalTo: bestScoreLabel.leadingAnchor, constant: -10).isActive = true
-    container.trailingAnchor.constraint(equalTo: bestScoreLabel.trailingAnchor, constant: 10).isActive = true
+    container.bottomAnchor.constraint(equalTo: leaderboardButton.bottomAnchor, constant: 10).isActive = true
+    container.leadingAnchor.constraint(equalTo: leaderboardButton.leadingAnchor, constant: -10).isActive = true
+    container.trailingAnchor.constraint(equalTo: leaderboardButton.trailingAnchor, constant: 10).isActive = true
     
+  }
+  
+  @objc func leaderboardButtonClicked() {
+    let gcVC = GKGameCenterViewController()
+    gcVC.gameCenterDelegate = self
+    gcVC.viewState = .leaderboards
+    gcVC.leaderboardIdentifier = LEADERBOARD_ID
+    
+    findViewController()?.present(gcVC, animated: true, completion: nil)
   }
   
   private func animateIn() {
@@ -134,4 +154,20 @@ class GameOverPopup : UIView {
     }
   }
   
+  
+  func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+    gameCenterViewController.dismiss(animated: true, completion: nil)
+  }
+}
+
+extension UIView {
+    func findViewController() -> UIViewController? {
+        if let nextResponder = self.next as? UIViewController {
+            return nextResponder
+        } else if let nextResponder = self.next as? UIView {
+            return nextResponder.findViewController()
+        } else {
+            return nil
+        }
+    }
 }

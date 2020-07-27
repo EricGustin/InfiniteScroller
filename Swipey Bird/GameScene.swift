@@ -9,8 +9,11 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import GameKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+  
+  let LEADERBOARD_ID = "com.eric.SwipeyBird"
   
   private var background = [SKSpriteNode]()
   private var player: SKSpriteNode!
@@ -254,6 +257,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   private func showPlayAgainPopup() {
     let playAgainPopup = GameOverPopup(score: score)
     self.view?.addSubview(playAgainPopup)
+    if Int64(score!) > GKScore(leaderboardIdentifier: LEADERBOARD_ID).value {
+      let bestScoreInt = GKScore(leaderboardIdentifier: LEADERBOARD_ID)
+      bestScoreInt.value = Int64(score!)
+      GKScore.report([bestScoreInt]) { (error) in
+          if error != nil {
+              print(error!.localizedDescription)
+          } else {
+              print("Best Score submitted to your Leaderboard!")
+          }
+      }
+    }
   }
   
   
@@ -291,4 +305,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       }
     }
   }
+  
 }
