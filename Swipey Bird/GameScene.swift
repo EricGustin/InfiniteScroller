@@ -18,7 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   private var background = [SKSpriteNode]()
   private var player: SKSpriteNode!
   private var playerYVelocity: Double = 0
-  private var otherObjectsSpeed: Double = 5
+  private var otherObjectsSpeed: Double = 6
   private var bottomObstacles: [SKSpriteNode] = []
   private var topObstacles: [SKSpriteNode] = []
   
@@ -98,7 +98,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       let scale = (self.scene?.size.height)! / background[i].frame.height
       background[i].setScale(scale)
       background[i].anchorPoint = CGPoint(x: 0.5, y: 0.5)
-      background[i].zPosition = -2
+      background[i].zPosition = -3
       background[i].position = CGPoint(x: CGFloat(i)*background[i].frame.width, y: 0)
       self.addChild(background[i])
     }
@@ -140,16 +140,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   private func createObstacles() {
     for i in 0...3 {
-      let randomYScale = CGFloat.random(in: 0.25...0.75)
+      let randomYScale = CGFloat.random(in: -1/8...3/8)
       
       topObstacles.append(SKSpriteNode(imageNamed: "upsideDownTube@4x"))
       topObstacles[i].xScale = 1.75
-      topObstacles[i].size = CGSize(width: topObstacles[i].frame.width, height: (self.scene?.size.height)!)
-      topObstacles[i].yScale = 0.75 - randomYScale
+      topObstacles[i].size = CGSize(width: topObstacles[i].frame.width, height: (self.scene?.frame.height)!)
+      topObstacles[i].yScale = 0.75
       topObstacles[i].physicsBody?.isDynamic = false
-      topObstacles[i].zPosition = 0
+      topObstacles[i].zPosition = -2
       topObstacles[i].name = "TopObstacle"
-      topObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: (self.scene?.size.height)!/2 - topObstacles[i].frame.height/2)
+      topObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: self.scene!.frame.maxY - self.scene!.frame.height*randomYScale + self.scene!.frame.height/12)
       topObstacles[i].physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: topObstacles[i].frame.width/6, height: topObstacles[i].frame.height))
       topObstacles[i].physicsBody?.affectedByGravity = false
       topObstacles[i].physicsBody?.isDynamic = false
@@ -158,10 +158,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       bottomObstacles.append(SKSpriteNode(imageNamed: "tube@4x"))
       bottomObstacles[i].xScale = 1.75
       bottomObstacles[i].size = CGSize(width: bottomObstacles[i].frame.width, height: (self.scene?.size.height)!)
-      bottomObstacles[i].yScale = randomYScale
-      bottomObstacles[i].zPosition = 0
+      bottomObstacles[i].yScale = 0.75
+      bottomObstacles[i].zPosition = -2
       bottomObstacles[i].name = "BottomObstacle"
-      bottomObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: bottomObstacles[i].size.height/2-6*(self.scene?.size.height)!/14)
+      bottomObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: self.scene!.frame.minY + self.scene!.frame.height*(0.25-randomYScale) - self.scene!.frame.height/12)
       bottomObstacles[i].physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: bottomObstacles[i].frame.width/6, height: bottomObstacles[i].frame.height))
       bottomObstacles[i].physicsBody?.affectedByGravity = false
       bottomObstacles[i].physicsBody?.isDynamic = false
@@ -189,13 +189,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   }
   
   private func moveObstacles() {
-    let random = CGFloat.random(in: 0.25...0.75)
+    let randomYScale = CGFloat.random(in: -1/8...3/8)
     self.enumerateChildNodes(withName: "BottomObstacle") { (node, error) in
       node.position.x -= CGFloat(self.otherObjectsSpeed)
       if node.position.x < -((self.scene?.size.width)!/2) - node.frame.width/2 {
         node.position.x = (self.scene?.size.width)!
-        node.yScale = random
-        node.position.y = node.frame.height/2-self.topOfGroundY
+        node.position.y = self.scene!.frame.minY + self.scene!.frame.height*(0.25-randomYScale) - self.scene!.frame.height/12
       }
       if self.player.position.y > (self.scene?.frame.maxY)! && abs(node.position.x - self.player.position.x) <= 2  {
         self.collision(between: self.player, object: node)
@@ -205,11 +204,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       node.position.x -= CGFloat(self.otherObjectsSpeed)
       if node.position.x < -((self.scene?.size.width)!/2) - node.frame.width/2 {
         node.position.x = (self.scene?.size.width)!
-        node.yScale = 0.75 - random
-        node.position.y = (self.scene?.size.height)!/2 - node.frame.height/2
+        node.position.y = self.scene!.frame.maxY - self.scene!.frame.height*randomYScale + self.scene!.frame.height/12
+        
       }
     }
-    print(self.otherObjectsSpeed)
   }
   
   private func movePlayer() {
@@ -263,17 +261,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   private func showPlayAgainPopup() {
     let playAgainPopup = GameOverPopup(score: score)
     self.view?.addSubview(playAgainPopup)
-    if Int64(score!) > GKScore(leaderboardIdentifier: LEADERBOARD_ID).value {
       let bestScoreInt = GKScore(leaderboardIdentifier: LEADERBOARD_ID)
       bestScoreInt.value = Int64(score!)
       GKScore.report([bestScoreInt]) { (error) in
           if error != nil {
               print(error!.localizedDescription)
-          } else {
-              print("Best Score submitted to your Leaderboard!")
           }
       }
-    }
   }
   
   
@@ -302,12 +296,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     if !isGamePaused {
       guard sender.view != nil else { return }
       if sender.direction == .up {
-        print("up")
-        playerYVelocity = 16.25 + Double(score!)*0.13
+        playerYVelocity = 19.5 + Double(score!)*0.13
       }
       if sender.direction == .down {
-        print("down")
-        playerYVelocity = -16.25 - Double(score!)*0.13
+        playerYVelocity = -19.5 - Double(score!)*0.13
       }
     }
   }
