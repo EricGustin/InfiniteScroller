@@ -34,6 +34,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   private var scoreLabel: UILabel?
   private var score: Int?
   
+  private let tapToStartLabel = UILabel()
+  
   override func didMove(to view: SKView) {
     playerTextureAtlas = SKTextureAtlas(named: "playerFlying")
     for i in 1...playerTextureAtlas.textureNames.count {
@@ -52,6 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         moveObstacles()
         updateScore()
       }
+      animateTapToStartLabel()
       moveGround()
       moveBackground()
       movePlayer()
@@ -88,6 +91,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     view?.addSubview(scoreLabel!)
     scoreLabel?.centerXAnchor.constraint(equalTo: view!.centerXAnchor).isActive = true
     scoreLabel?.topAnchor.constraint(equalTo: view!.topAnchor, constant: UIScreen.main.bounds.height/8).isActive = true
+    
+    tapToStartLabel.text = "TAP TO START"
+    tapToStartLabel.font = UIFont(name: "Cartooncookies", size: 22)
+    tapToStartLabel.textColor = .black
+    tapToStartLabel.translatesAutoresizingMaskIntoConstraints = false
+    view?.addSubview(tapToStartLabel)
+    tapToStartLabel.centerXAnchor.constraint(equalTo: view!.centerXAnchor).isActive = true
+    tapToStartLabel.topAnchor.constraint(equalTo: view!.topAnchor, constant: UIScreen.main.bounds.height/4).isActive = true
   }
   
   private func createBackground() {
@@ -223,6 +234,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       }
     }
   }
+  
+  private func animateTapToStartLabel() {
+    if self.tapToStartLabel.layer.animationKeys()?.count == nil {
+      UIView.animate(withDuration: 1, animations: {
+        self.tapToStartLabel.transform = CGAffineTransform.init(scaleX: 1.5, y: 1.5)
+      }) { _ in
+        UIView.animate(withDuration: 1) {
+          self.tapToStartLabel.transform = .identity
+        }
+      }
+    }
+    
+  }
     
   private func setUpGestureRecognizers() {
     physicsWorld.contactDelegate = self
@@ -284,6 +308,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
     if !isGameBegan {
       isGameBegan = true
+      tapToStartLabel.removeFromSuperview()
       createObstacles()
     }
     if !isGamePaused {
