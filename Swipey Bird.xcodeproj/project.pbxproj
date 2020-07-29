@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FAA276AB24CF6AFC0056EDF1 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */; };
+		FAA276CF24D221A00056EDF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAA276CE24D221A00056EDF1 /* GoogleService-Info.plist */; };
 		FAD5464924C7DF3600D7BE78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5464824C7DF3600D7BE78 /* AppDelegate.swift */; };
 		FAD5464B24C7DF3600D7BE78 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAD5464A24C7DF3600D7BE78 /* GameScene.sks */; };
 		FAD5464D24C7DF3600D7BE78 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAD5464C24C7DF3600D7BE78 /* Actions.sks */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		FAA276CE24D221A00056EDF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAD5464524C7DF3600D7BE78 /* Swipey Bird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swipey Bird.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAD5464824C7DF3600D7BE78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAD5464A24C7DF3600D7BE78 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				FAD5465524C7DF3800D7BE78 /* Assets.xcassets */,
 				FAD5465724C7DF3800D7BE78 /* LaunchScreen.storyboard */,
 				FAD5465A24C7DF3800D7BE78 /* Info.plist */,
+				FAA276CE24D221A00056EDF1 /* GoogleService-Info.plist */,
 				FAD5467024C94B6B00D7BE78 /* GameOverPopup.swift */,
 				FAD5467224C971AF00D7BE78 /* GameStatus.swift */,
 			);
@@ -168,6 +171,7 @@
 			files = (
 				FAD5465424C7DF3600D7BE78 /* Main.storyboard in Resources */,
 				FAD5464B24C7DF3600D7BE78 /* GameScene.sks in Resources */,
+				FAA276CF24D221A00056EDF1 /* GoogleService-Info.plist in Resources */,
 				FAD5465624C7DF3800D7BE78 /* Assets.xcassets in Resources */,
 				FAD5465924C7DF3800D7BE78 /* LaunchScreen.storyboard in Resources */,
 				FAD5466D24C93D0F00D7BE78 /* Cartoon cookies.ttf in Resources */,
@@ -335,7 +339,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X6KK3Y5QZJ;
 				INFOPLIST_FILE = "Swipey Bird/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -354,7 +358,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X6KK3Y5QZJ;
 				INFOPLIST_FILE = "Swipey Bird/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

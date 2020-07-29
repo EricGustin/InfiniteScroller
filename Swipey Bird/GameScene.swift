@@ -35,6 +35,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   private var score: Int?
   
   private let tapToStartLabel = UILabel()
+  private let questionMarkButton = UIButton()
   
   override func didMove(to view: SKView) {
     playerTextureAtlas = SKTextureAtlas(named: "playerFlying")
@@ -99,6 +100,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     view?.addSubview(tapToStartLabel)
     tapToStartLabel.centerXAnchor.constraint(equalTo: view!.centerXAnchor).isActive = true
     tapToStartLabel.topAnchor.constraint(equalTo: view!.topAnchor, constant: UIScreen.main.bounds.height/4).isActive = true
+    
+    questionMarkButton.addTarget(self, action: #selector(questionMarkButtonClicked), for: .touchUpInside)
+    questionMarkButton.setImage(UIImage(named: "questionmark"), for: .normal)
+    questionMarkButton.translatesAutoresizingMaskIntoConstraints = false
+    view!.addSubview(questionMarkButton)
+    questionMarkButton.trailingAnchor.constraint(equalTo: view!.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
+    questionMarkButton.topAnchor.constraint(equalTo: view!.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
   }
   
   private func createBackground() {
@@ -123,7 +131,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       groundImage.size = CGSize(width: (self.scene?.size.width)!, height: (self.scene?.size.height)!/7)
       groundImage.anchorPoint = CGPoint(x: 0.5, y: 0.5)
       groundImage.zPosition = -1
-      groundImage.position = CGPoint(x: CGFloat(i)*groundImage.size.width, y: -self.frame.size.height/2)
+      groundImage.position = CGPoint(x: CGFloat(i)*groundImage.size.width, y: -self.frame.size.height/2 + self.scene!.size.height/28)
       groundImage.physicsBody = SKPhysicsBody(rectangleOf: groundImage.size)
       groundImage.physicsBody?.isDynamic = false
       self.addChild(groundImage)
@@ -135,7 +143,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     player.name = "Player"
     player.zPosition = 1
     player.setScale(CGFloat(0.2))
-    player.position = CGPoint(x: -(scene?.frame.width)!/12, y: 0)
+    player.position = CGPoint(x: -(scene?.frame.width)!/8, y: 0)
     
     let offsetX = player.size.width * player.anchorPoint.x
     let offsetY = player.size.height * player.anchorPoint.y
@@ -160,7 +168,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       topObstacles[i].physicsBody?.isDynamic = false
       topObstacles[i].zPosition = -2
       topObstacles[i].name = "TopObstacle"
-      topObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: self.scene!.frame.maxY - self.scene!.frame.height*randomYScale + self.scene!.frame.height/12)
+      if i == 0 {
+        topObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: self.scene!.frame.maxY - self.scene!.frame.height*0.125 + self.scene!.frame.height/12)
+      } else {
+        topObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: self.scene!.frame.maxY - self.scene!.frame.height*randomYScale + self.scene!.frame.height/12 + self.scene!.frame.height/14)
+      }
       topObstacles[i].physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: topObstacles[i].frame.width/6, height: topObstacles[i].frame.height))
       topObstacles[i].physicsBody?.affectedByGravity = false
       topObstacles[i].physicsBody?.isDynamic = false
@@ -172,7 +184,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       bottomObstacles[i].yScale = 0.75
       bottomObstacles[i].zPosition = -2
       bottomObstacles[i].name = "BottomObstacle"
-      bottomObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: self.scene!.frame.minY + self.scene!.frame.height*(0.25-randomYScale) - self.scene!.frame.height/12)
+      if i == 0 {
+        bottomObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: self.scene!.frame.minY + self.scene!.frame.height*0.125 - self.scene!.frame.height/12)
+      } else {
+        bottomObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: self.scene!.frame.minY + self.scene!.frame.height*(0.25-randomYScale) - self.scene!.frame.height/12 + self.scene!.frame.height/14)
+      }
       bottomObstacles[i].physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: bottomObstacles[i].frame.width/6, height: bottomObstacles[i].frame.height))
       bottomObstacles[i].physicsBody?.affectedByGravity = false
       bottomObstacles[i].physicsBody?.isDynamic = false
@@ -205,7 +221,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       node.position.x -= CGFloat(self.otherObjectsSpeed)
       if node.position.x < -((self.scene?.size.width)!/2) - node.frame.width/2 {
         node.position.x = (self.scene?.size.width)!
-        node.position.y = self.scene!.frame.minY + self.scene!.frame.height*(0.25-randomYScale) - self.scene!.frame.height/12
+        node.position.y = self.scene!.frame.minY + self.scene!.frame.height*(0.25-randomYScale) - self.scene!.frame.height/12 + self.scene!.frame.height/14
       }
       if self.player.position.y > (self.scene?.frame.maxY)! && abs(node.position.x - self.player.position.x) <= 2  {
         self.collision(between: self.player, object: node)
@@ -215,7 +231,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       node.position.x -= CGFloat(self.otherObjectsSpeed)
       if node.position.x < -((self.scene?.size.width)!/2) - node.frame.width/2 {
         node.position.x = (self.scene?.size.width)!
-        node.position.y = self.scene!.frame.maxY - self.scene!.frame.height*randomYScale + self.scene!.frame.height/12
+        node.position.y = self.scene!.frame.maxY - self.scene!.frame.height*randomYScale + self.scene!.frame.height/12 + self.scene!.frame.height/14
         
       }
     }
@@ -239,9 +255,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     if self.tapToStartLabel.layer.animationKeys()?.count == nil {
       UIView.animate(withDuration: 1, animations: {
         self.tapToStartLabel.transform = CGAffineTransform.init(scaleX: 1.5, y: 1.5)
+        self.questionMarkButton.transform = CGAffineTransform.init(scaleX: 1.1, y: 1.1)
       }) { _ in
         UIView.animate(withDuration: 1) {
           self.tapToStartLabel.transform = .identity
+          self.questionMarkButton.transform = .identity
         }
       }
     }
@@ -309,6 +327,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     if !isGameBegan {
       isGameBegan = true
       tapToStartLabel.removeFromSuperview()
+      questionMarkButton.removeFromSuperview()
       createObstacles()
     }
     if !isGamePaused {
@@ -327,6 +346,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         playerYVelocity = -19.5 - Double(score!)*0.13
       }
     }
+  }
+  
+  @objc func questionMarkButtonClicked() {
+    
   }
   
 }
