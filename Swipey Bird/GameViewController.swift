@@ -10,8 +10,11 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import GameKit
+import GoogleMobileAds
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, GADBannerViewDelegate {
+  
+  private var bannerView: GADBannerView!
   
   //  Gamecenter variables
   var gcEnabled = Bool()
@@ -20,7 +23,7 @@ class GameViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    setUpAds()
     authenticateLocalPlayer()
     
     if let view = self.view as! SKView? {
@@ -35,6 +38,18 @@ class GameViewController: UIViewController {
       
       view.ignoresSiblingOrder = true
     }
+  }
+  
+  private func setUpAds() {
+    bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+    bannerView.translatesAutoresizingMaskIntoConstraints = false
+    view?.addSubview(bannerView)
+    bannerView.centerXAnchor.constraint(equalTo: view!.centerXAnchor).isActive = true
+    bannerView.bottomAnchor.constraint(equalTo: view!.bottomAnchor).isActive = true
+    bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+    bannerView.rootViewController = self
+    bannerView.load(GADRequest())
+    bannerView.delegate = self
   }
   
   func authenticateLocalPlayer() {
@@ -59,6 +74,13 @@ class GameViewController: UIViewController {
         print(error as Any)
       }
     }
+  }
+  
+  internal func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+    bannerView.alpha = 0
+    UIView.animate(withDuration: 1, animations: {
+      bannerView.alpha = 1
+    })
   }
     
   

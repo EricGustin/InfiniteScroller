@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		243ED02625B7C30F87879A86 /* Pods_Swipey_Bird.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2524CCE4F813CFD1A4F5361 /* Pods_Swipey_Bird.framework */; };
 		FAA276AB24CF6AFC0056EDF1 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */; };
-		FAA276CF24D221A00056EDF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAA276CE24D221A00056EDF1 /* GoogleService-Info.plist */; };
+		FAA276D124D2227C0056EDF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAA276D024D2227C0056EDF1 /* GoogleService-Info.plist */; };
 		FAD5464924C7DF3600D7BE78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5464824C7DF3600D7BE78 /* AppDelegate.swift */; };
 		FAD5464B24C7DF3600D7BE78 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAD5464A24C7DF3600D7BE78 /* GameScene.sks */; };
 		FAD5464D24C7DF3600D7BE78 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAD5464C24C7DF3600D7BE78 /* Actions.sks */; };
@@ -25,8 +26,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B5C5E40ABAF918ECB9DAB8C /* Pods-Swipey Bird.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipey Bird.debug.xcconfig"; path = "Target Support Files/Pods-Swipey Bird/Pods-Swipey Bird.debug.xcconfig"; sourceTree = "<group>"; };
+		A5543A6A5C376873B9A71A51 /* Pods-Swipey Bird.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipey Bird.release.xcconfig"; path = "Target Support Files/Pods-Swipey Bird/Pods-Swipey Bird.release.xcconfig"; sourceTree = "<group>"; };
+		D2524CCE4F813CFD1A4F5361 /* Pods_Swipey_Bird.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swipey_Bird.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		FAA276CE24D221A00056EDF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FAA276D024D2227C0056EDF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAD5464524C7DF3600D7BE78 /* Swipey Bird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swipey Bird.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAD5464824C7DF3600D7BE78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAD5464A24C7DF3600D7BE78 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -50,16 +54,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAA276AB24CF6AFC0056EDF1 /* GameKit.framework in Frameworks */,
+				243ED02625B7C30F87879A86 /* Pods_Swipey_Bird.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B55AFF9A96B948C6B5C1B5AF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B5C5E40ABAF918ECB9DAB8C /* Pods-Swipey Bird.debug.xcconfig */,
+				A5543A6A5C376873B9A71A51 /* Pods-Swipey Bird.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FAA276A924CF6AFC0056EDF1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */,
+				D2524CCE4F813CFD1A4F5361 /* Pods_Swipey_Bird.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -70,6 +86,7 @@
 				FAD5464724C7DF3600D7BE78 /* Swipey Bird */,
 				FAD5464624C7DF3600D7BE78 /* Products */,
 				FAA276A924CF6AFC0056EDF1 /* Frameworks */,
+				B55AFF9A96B948C6B5C1B5AF /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -95,7 +112,7 @@
 				FAD5465524C7DF3800D7BE78 /* Assets.xcassets */,
 				FAD5465724C7DF3800D7BE78 /* LaunchScreen.storyboard */,
 				FAD5465A24C7DF3800D7BE78 /* Info.plist */,
-				FAA276CE24D221A00056EDF1 /* GoogleService-Info.plist */,
+				FAA276D024D2227C0056EDF1 /* GoogleService-Info.plist */,
 				FAD5467024C94B6B00D7BE78 /* GameOverPopup.swift */,
 				FAD5467224C971AF00D7BE78 /* GameStatus.swift */,
 			);
@@ -118,9 +135,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAD5465D24C7DF3800D7BE78 /* Build configuration list for PBXNativeTarget "Swipey Bird" */;
 			buildPhases = (
+				3BCF9FA1EBA9420C46D55691 /* [CP] Check Pods Manifest.lock */,
 				FAD5464124C7DF3600D7BE78 /* Sources */,
 				FAD5464224C7DF3600D7BE78 /* Frameworks */,
 				FAD5464324C7DF3600D7BE78 /* Resources */,
+				01B2D58B13F59F79DFC13CC2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -171,7 +190,7 @@
 			files = (
 				FAD5465424C7DF3600D7BE78 /* Main.storyboard in Resources */,
 				FAD5464B24C7DF3600D7BE78 /* GameScene.sks in Resources */,
-				FAA276CF24D221A00056EDF1 /* GoogleService-Info.plist in Resources */,
+				FAA276D124D2227C0056EDF1 /* GoogleService-Info.plist in Resources */,
 				FAD5465624C7DF3800D7BE78 /* Assets.xcassets in Resources */,
 				FAD5465924C7DF3800D7BE78 /* LaunchScreen.storyboard in Resources */,
 				FAD5466D24C93D0F00D7BE78 /* Cartoon cookies.ttf in Resources */,
@@ -182,6 +201,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		01B2D58B13F59F79DFC13CC2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Swipey Bird/Pods-Swipey Bird-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Swipey Bird/Pods-Swipey Bird-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Swipey Bird/Pods-Swipey Bird-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3BCF9FA1EBA9420C46D55691 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Swipey Bird-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FAD5464124C7DF3600D7BE78 /* Sources */ = {
@@ -334,6 +395,7 @@
 		};
 		FAD5465E24C7DF3800D7BE78 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B5C5E40ABAF918ECB9DAB8C /* Pods-Swipey Bird.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -353,6 +415,7 @@
 		};
 		FAD5465F24C7DF3800D7BE78 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A5543A6A5C376873B9A71A51 /* Pods-Swipey Bird.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

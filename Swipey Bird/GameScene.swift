@@ -11,6 +11,7 @@ import SpriteKit
 import GameplayKit
 import GameKit
 
+
 class GameScene: SKScene, SKPhysicsContactDelegate {
   
   let LEADERBOARD_ID = "com.eric.SwipeyBird"
@@ -36,6 +37,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   private let tapToStartLabel = UILabel()
   private let questionMarkButton = UIButton()
+  
+  
   
   override func didMove(to view: SKView) {
     playerTextureAtlas = SKTextureAtlas(named: "playerFlying")
@@ -108,6 +111,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     questionMarkButton.trailingAnchor.constraint(equalTo: view!.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
     questionMarkButton.topAnchor.constraint(equalTo: view!.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
   }
+  
   
   private func createBackground() {
     //  Set up background
