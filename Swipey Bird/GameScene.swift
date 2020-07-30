@@ -36,9 +36,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   private var score: Int?
   
   private let tapToStartLabel = UILabel()
-  private let questionMarkButton = UIButton()
+  private var questionMarkButton: UIButton?
   
-  
+  private var howToPlayPopup: HowToPlayPopup?
   
   override func didMove(to view: SKView) {
     playerTextureAtlas = SKTextureAtlas(named: "playerFlying")
@@ -104,12 +104,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     tapToStartLabel.centerXAnchor.constraint(equalTo: view!.centerXAnchor).isActive = true
     tapToStartLabel.topAnchor.constraint(equalTo: view!.topAnchor, constant: UIScreen.main.bounds.height/4).isActive = true
     
-    questionMarkButton.addTarget(self, action: #selector(questionMarkButtonClicked), for: .touchUpInside)
-    questionMarkButton.setImage(UIImage(named: "questionmark"), for: .normal)
-    questionMarkButton.translatesAutoresizingMaskIntoConstraints = false
-    view!.addSubview(questionMarkButton)
-    questionMarkButton.trailingAnchor.constraint(equalTo: view!.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
-    questionMarkButton.topAnchor.constraint(equalTo: view!.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+    questionMarkButton = UIButton()
+    questionMarkButton?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(questionMarkButtonClicked)))
+    questionMarkButton?.setImage(UIImage(named: "questionmark"), for: .normal)
+    questionMarkButton?.translatesAutoresizingMaskIntoConstraints = false
+    view!.addSubview(questionMarkButton!)
+    questionMarkButton?.trailingAnchor.constraint(equalTo: view!.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
+    questionMarkButton?.topAnchor.constraint(equalTo: view!.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
   }
   
   
@@ -259,11 +260,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     if self.tapToStartLabel.layer.animationKeys()?.count == nil {
       UIView.animate(withDuration: 1, animations: {
         self.tapToStartLabel.transform = CGAffineTransform.init(scaleX: 1.5, y: 1.5)
-        self.questionMarkButton.transform = CGAffineTransform.init(scaleX: 1.1, y: 1.1)
       }) { _ in
         UIView.animate(withDuration: 1) {
           self.tapToStartLabel.transform = .identity
-          self.questionMarkButton.transform = .identity
         }
       }
     }
@@ -307,13 +306,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   private func showPlayAgainPopup() {
     let playAgainPopup = GameOverPopup(score: score)
     self.view?.addSubview(playAgainPopup)
-      let bestScoreInt = GKScore(leaderboardIdentifier: LEADERBOARD_ID)
-      bestScoreInt.value = Int64(score!)
-      GKScore.report([bestScoreInt]) { (error) in
-          if error != nil {
-              print(error!.localizedDescription)
-          }
+    let bestScoreInt = GKScore(leaderboardIdentifier: LEADERBOARD_ID)
+    bestScoreInt.value = Int64(score!)
+    GKScore.report([bestScoreInt]) { (error) in
+      if error != nil {
+        print(error!.localizedDescription)
       }
+    }
   }
   
   
@@ -331,7 +330,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     if !isGameBegan {
       isGameBegan = true
       tapToStartLabel.removeFromSuperview()
-      questionMarkButton.removeFromSuperview()
+      questionMarkButton?.removeFromSuperview()
+      howToPlayPopup?.animateOut()
       createObstacles()
     }
     if !isGamePaused {
@@ -353,7 +353,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   }
   
   @objc func questionMarkButtonClicked() {
-    
+    questionMarkButton?.removeFromSuperview()
+    howToPlayPopup = HowToPlayPopup()
+    self.view?.addSubview(howToPlayPopup!)
   }
   
 }

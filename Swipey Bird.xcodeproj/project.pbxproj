@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		243ED02625B7C30F87879A86 /* Pods_Swipey_Bird.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2524CCE4F813CFD1A4F5361 /* Pods_Swipey_Bird.framework */; };
 		FAA276AB24CF6AFC0056EDF1 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */; };
 		FAA276D124D2227C0056EDF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAA276D024D2227C0056EDF1 /* GoogleService-Info.plist */; };
+		FAA276D324D2353B0056EDF1 /* HowToPlayPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA276D224D2353B0056EDF1 /* HowToPlayPopup.swift */; };
 		FAD5464924C7DF3600D7BE78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5464824C7DF3600D7BE78 /* AppDelegate.swift */; };
 		FAD5464B24C7DF3600D7BE78 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAD5464A24C7DF3600D7BE78 /* GameScene.sks */; };
 		FAD5464D24C7DF3600D7BE78 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAD5464C24C7DF3600D7BE78 /* Actions.sks */; };
@@ -31,6 +32,7 @@
 		D2524CCE4F813CFD1A4F5361 /* Pods_Swipey_Bird.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swipey_Bird.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		FAA276D024D2227C0056EDF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FAA276D224D2353B0056EDF1 /* HowToPlayPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayPopup.swift; sourceTree = "<group>"; };
 		FAD5464524C7DF3600D7BE78 /* Swipey Bird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swipey Bird.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAD5464824C7DF3600D7BE78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAD5464A24C7DF3600D7BE78 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -67,7 +69,6 @@
 				3B5C5E40ABAF918ECB9DAB8C /* Pods-Swipey Bird.debug.xcconfig */,
 				A5543A6A5C376873B9A71A51 /* Pods-Swipey Bird.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -114,6 +115,7 @@
 				FAD5465A24C7DF3800D7BE78 /* Info.plist */,
 				FAA276D024D2227C0056EDF1 /* GoogleService-Info.plist */,
 				FAD5467024C94B6B00D7BE78 /* GameOverPopup.swift */,
+				FAA276D224D2353B0056EDF1 /* HowToPlayPopup.swift */,
 				FAD5467224C971AF00D7BE78 /* GameStatus.swift */,
 			);
 			path = "Swipey Bird";
@@ -253,6 +255,7 @@
 				FAD5464F24C7DF3600D7BE78 /* GameScene.swift in Sources */,
 				FAD5467324C971AF00D7BE78 /* GameStatus.swift in Sources */,
 				FAD5465124C7DF3600D7BE78 /* GameViewController.swift in Sources */,
+				FAA276D324D2353B0056EDF1 /* HowToPlayPopup.swift in Sources */,
 				FAD5464924C7DF3600D7BE78 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
