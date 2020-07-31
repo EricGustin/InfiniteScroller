@@ -37,7 +37,7 @@ class IAPManager: NSObject {
     }
   }
   
-  func getProduct(withHandler productsReceiveHandler: @escaping (_ result: Result<[SKProduct], IAPManagerError>) -> Void) {
+  func getProducts(withHandler productsReceiveHandler: @escaping (_ result: Result<[SKProduct], IAPManagerError>) -> Void) {
     // Result carries the collection of fetched products from the App Store if success, otherwise
     // it will carry a IAPManagerError on failure
     onReceiveProductsHandler = productsReceiveHandler
@@ -50,6 +50,13 @@ class IAPManager: NSObject {
     let request = SKProductsRequest(productIdentifiers: Set(productIDs))
     request.delegate = self
     request.start()
+  }
+  
+  func getPriceFormatted(for product: SKProduct) -> String? {
+      let formatter = NumberFormatter()
+      formatter.numberStyle = .currency
+      formatter.locale = product.priceLocale
+      return formatter.string(from: product.price)
   }
   
 }
@@ -73,5 +80,10 @@ extension IAPManager: SKProductsRequestDelegate {
     } else {
       onReceiveProductsHandler?(.failure(.noProductsFound))
     }
+  }
+  
+  // delegate method that tells me if the request failed from soe reason
+  func request(_ request: SKRequest, didFailWithError error: Error) {
+    onReceiveProductsHandler?(.failure(.productRequestFailed))
   }
 }

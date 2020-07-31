@@ -13,7 +13,7 @@ import GameKit
 import GoogleMobileAds
 
 class GameViewController: UIViewController, GADBannerViewDelegate {
-  
+
   private var bannerView: GADBannerView!
   
   //  Gamecenter variables
@@ -38,6 +38,9 @@ class GameViewController: UIViewController, GADBannerViewDelegate {
       
       view.ignoresSiblingOrder = true
     }
+  }
+  
+  override func viewDidAppear(_ animated: Bool) {
   }
   
   private func setUpAds() {
@@ -82,7 +85,7 @@ class GameViewController: UIViewController, GADBannerViewDelegate {
       bannerView.alpha = 1
     })
   }
-    
+  
   
   override var shouldAutorotate: Bool {
     return true
