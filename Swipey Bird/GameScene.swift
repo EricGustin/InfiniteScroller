@@ -37,6 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   private let tapToStartLabel = UILabel()
   private var questionMarkButton: UIButton?
+  private var noAdsButton: UIButton?
   
   private var howToPlayPopup: HowToPlayPopup?
   
@@ -107,10 +108,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     questionMarkButton = UIButton()
     questionMarkButton?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(questionMarkButtonClicked)))
     questionMarkButton?.setImage(UIImage(named: "questionmark"), for: .normal)
+    questionMarkButton?.transform = CGAffineTransform.init(scaleX: 0.5, y: 0.5)
     questionMarkButton?.translatesAutoresizingMaskIntoConstraints = false
     view!.addSubview(questionMarkButton!)
     questionMarkButton?.trailingAnchor.constraint(equalTo: view!.safeAreaLayoutGuide.trailingAnchor, constant: -10).isActive = true
     questionMarkButton?.topAnchor.constraint(equalTo: view!.safeAreaLayoutGuide.topAnchor, constant: 10).isActive = true
+    
+    noAdsButton = UIButton()
+    noAdsButton?.setImage(UIImage(named: "noads"), for: .normal)
+    noAdsButton?.transform = CGAffineTransform.init(scaleX: 0.3, y: 0.3)
+    noAdsButton?.translatesAutoresizingMaskIntoConstraints = false
+    view!.addSubview(noAdsButton!)
+    noAdsButton?.leadingAnchor.constraint(equalTo: view!.safeAreaLayoutGuide.leadingAnchor, constant: -10).isActive = true
+    noAdsButton?.centerYAnchor.constraint(equalTo: questionMarkButton!.centerYAnchor).isActive = true
   }
   
   
@@ -331,6 +341,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       isGameBegan = true
       tapToStartLabel.removeFromSuperview()
       questionMarkButton?.removeFromSuperview()
+      noAdsButton?.removeFromSuperview()
       howToPlayPopup?.animateOut()
       createObstacles()
     }

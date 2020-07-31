@@ -11,6 +11,9 @@
 		FAA276AB24CF6AFC0056EDF1 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */; };
 		FAA276D124D2227C0056EDF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAA276D024D2227C0056EDF1 /* GoogleService-Info.plist */; };
 		FAA276D324D2353B0056EDF1 /* HowToPlayPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA276D224D2353B0056EDF1 /* HowToPlayPopup.swift */; };
+		FAA276D524D272FB0056EDF1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA276D424D272FB0056EDF1 /* StoreKit.framework */; };
+		FAA276D724D278BB0056EDF1 /* IAP_ProductIDs.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAA276D624D278BB0056EDF1 /* IAP_ProductIDs.plist */; };
+		FAA276D924D279850056EDF1 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA276D824D279850056EDF1 /* IAPManager.swift */; };
 		FAD5464924C7DF3600D7BE78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5464824C7DF3600D7BE78 /* AppDelegate.swift */; };
 		FAD5464B24C7DF3600D7BE78 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAD5464A24C7DF3600D7BE78 /* GameScene.sks */; };
 		FAD5464D24C7DF3600D7BE78 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAD5464C24C7DF3600D7BE78 /* Actions.sks */; };
@@ -33,6 +36,9 @@
 		FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		FAA276D024D2227C0056EDF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAA276D224D2353B0056EDF1 /* HowToPlayPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayPopup.swift; sourceTree = "<group>"; };
+		FAA276D424D272FB0056EDF1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		FAA276D624D278BB0056EDF1 /* IAP_ProductIDs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = IAP_ProductIDs.plist; sourceTree = "<group>"; };
+		FAA276D824D279850056EDF1 /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
 		FAD5464524C7DF3600D7BE78 /* Swipey Bird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swipey Bird.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAD5464824C7DF3600D7BE78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAD5464A24C7DF3600D7BE78 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -55,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA276D524D272FB0056EDF1 /* StoreKit.framework in Frameworks */,
 				FAA276AB24CF6AFC0056EDF1 /* GameKit.framework in Frameworks */,
 				243ED02625B7C30F87879A86 /* Pods_Swipey_Bird.framework in Frameworks */,
 			);
@@ -75,6 +82,7 @@
 		FAA276A924CF6AFC0056EDF1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FAA276D424D272FB0056EDF1 /* StoreKit.framework */,
 				FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */,
 				D2524CCE4F813CFD1A4F5361 /* Pods_Swipey_Bird.framework */,
 			);
@@ -114,9 +122,11 @@
 				FAD5465724C7DF3800D7BE78 /* LaunchScreen.storyboard */,
 				FAD5465A24C7DF3800D7BE78 /* Info.plist */,
 				FAA276D024D2227C0056EDF1 /* GoogleService-Info.plist */,
+				FAA276D624D278BB0056EDF1 /* IAP_ProductIDs.plist */,
 				FAD5467024C94B6B00D7BE78 /* GameOverPopup.swift */,
 				FAA276D224D2353B0056EDF1 /* HowToPlayPopup.swift */,
 				FAD5467224C971AF00D7BE78 /* GameStatus.swift */,
+				FAA276D824D279850056EDF1 /* IAPManager.swift */,
 			);
 			path = "Swipey Bird";
 			sourceTree = "<group>";
@@ -196,6 +206,7 @@
 				FAD5465624C7DF3800D7BE78 /* Assets.xcassets in Resources */,
 				FAD5465924C7DF3800D7BE78 /* LaunchScreen.storyboard in Resources */,
 				FAD5466D24C93D0F00D7BE78 /* Cartoon cookies.ttf in Resources */,
+				FAA276D724D278BB0056EDF1 /* IAP_ProductIDs.plist in Resources */,
 				FAD5464D24C7DF3600D7BE78 /* Actions.sks in Resources */,
 				FAD5466F24C93D1D00D7BE78 /* Bubblegum.ttf in Resources */,
 				FAD5466824C8CF2100D7BE78 /* playerFlying.atlas in Resources */,
@@ -251,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA276D924D279850056EDF1 /* IAPManager.swift in Sources */,
 				FAD5467124C94B6B00D7BE78 /* GameOverPopup.swift in Sources */,
 				FAD5464F24C7DF3600D7BE78 /* GameScene.swift in Sources */,
 				FAD5467324C971AF00D7BE78 /* GameStatus.swift in Sources */,
