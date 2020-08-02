@@ -441,6 +441,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.eric.SwipeyBird;
 				PRODUCT_NAME = "Swipey Bird";
 				SWIFT_VERSION = 5.0;
@@ -461,6 +462,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.eric.SwipeyBird;
 				PRODUCT_NAME = "Swipey Bird";
 				SWIFT_VERSION = 5.0;

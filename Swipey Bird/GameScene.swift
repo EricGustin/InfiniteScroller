@@ -192,9 +192,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       topObstacles[i].physicsBody?.isDynamic = false
       scene?.addChild(topObstacles[i])
       
-      bottomObstacles.append(SKSpriteNode(imageNamed: "tube@4x"))
-      bottomObstacles[i].xScale = 1.75
-      bottomObstacles[i].size = CGSize(width: bottomObstacles[i].frame.width, height: (self.scene?.size.height)!)
+      bottomObstacles.append(SKSpriteNode(imageNamed: "skyscraper@4x"))
+      bottomObstacles[i].xScale = 0.4
+     bottomObstacles[i].size = CGSize(width: bottomObstacles[i].frame.width, height: (self.scene?.size.height)!)
       bottomObstacles[i].yScale = 0.75
       bottomObstacles[i].zPosition = -2
       bottomObstacles[i].name = "BottomObstacle"
@@ -203,7 +203,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       } else {
         bottomObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: self.scene!.frame.minY + self.scene!.frame.height*(0.25-randomYScale) - self.scene!.frame.height/12 + self.scene!.frame.height/14)
       }
-      bottomObstacles[i].physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: bottomObstacles[i].frame.width/6, height: bottomObstacles[i].frame.height))
+      bottomObstacles[i].physicsBody = SKPhysicsBody(texture: bottomObstacles[i].texture!, size: CGSize(width: bottomObstacles[i].texture!.size().width*0.4, height: self.scene!.size.height*0.75))
       bottomObstacles[i].physicsBody?.affectedByGravity = false
       bottomObstacles[i].physicsBody?.isDynamic = false
       scene?.addChild(bottomObstacles[i])
