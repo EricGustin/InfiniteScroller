@@ -18,7 +18,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   private var background = [SKSpriteNode]()
   private var player: SKSpriteNode!
   private var playerYVelocity: Double = 0
-  private var otherObjectsSpeed: Double = 6
+  private var otherObjectsSpeed: Double = 9
   private var bottomObstacles: [SKSpriteNode] = []
   private var topObstacles: [SKSpriteNode] = []
   
@@ -31,6 +31,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   private var topOfGroundY: CGFloat!
   private var vertSpaceBetweenObjects: CGFloat!
+  private let widthOfCloudPhysicsBody: CGFloat = 280
+  private let widthOfSkyscraperPhysicsBody: CGFloat = 1568/13
+  private var playerWidth: CGFloat!
   
   private var scoreLabel: UILabel?
   private var score: Int?
@@ -84,7 +87,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     createBackground()
     createGround()
     createPlayer()
-    // obstacles created after the first click
+    // obstacles are created after the first click
   }
   
   private func setUpSubviews() {
@@ -162,22 +165,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     player.position = CGPoint(x: -(scene?.frame.width)!/8, y: 0)
     
     let offsetX = player.size.width * player.anchorPoint.x
+    playerWidth = offsetX*1.08
     let offsetY = player.size.height * player.anchorPoint.y
-    player.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: offsetX*1.08, height: offsetY*1.25), center: CGPoint(x: player.frame.maxY - player.frame.width*0.38, y: player.frame.midY))
+    player.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: playerWidth, height: offsetY*1.25), center: CGPoint(x: player.frame.maxY - player.frame.width*0.38, y: player.frame.midY))
     player.physicsBody?.affectedByGravity = true
     player.physicsBody?.restitution = 0.0
     player.physicsBody?.contactTestBitMask = player.physicsBody?.collisionBitMask ?? 0
     player.run(SKAction.repeatForever(SKAction.animate(with: playerTextureArray, timePerFrame: 0.15)))
-    
-
     scene?.addChild(player)
   }
   
   private func createObstacles() {
     for i in 0...3 {
-      //let randomYScale = CGFloat.random(in: -1/8...3/8)
       let randomYOffset = CGFloat.random(in: 0...0.5)
-      
       
       bottomObstacles.append(SKSpriteNode(imageNamed: "skyscraper@4x"))
       bottomObstacles[i].xScale = 0.4
@@ -186,10 +186,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       bottomObstacles[i].zPosition = -2
       bottomObstacles[i].name = "BottomObstacle"
       if i == 0 {
-        bottomObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: self.scene!.frame.minY + self.scene!.frame.height*0.125 - self.scene!.frame.height/12)
+        bottomObstacles[i].position = CGPoint(x: CGFloat(i+1)*((8/39)*self.scene!.frame.height+widthOfCloudPhysicsBody/2 + widthOfSkyscraperPhysicsBody), y: self.scene!.frame.minY + self.scene!.frame.height*(1/24))
       } else {
-//        bottomObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: self.scene!.frame.minY + self.scene!.frame.height*(0.25-randomYScale) - self.scene!.frame.height/12 + self.scene!.frame.height/14)
-        bottomObstacles[i].position.x = CGFloat(i+1)*(self.scene?.size.width)!/2
+        bottomObstacles[i].position.x = CGFloat(i+1)*((8/39)*self.scene!.frame.height+widthOfCloudPhysicsBody/2 + widthOfSkyscraperPhysicsBody)
         bottomObstacles[i].position.y = self.scene!.frame.height*(-randomYOffset-1/6)
       }
       bottomObstacles[i].physicsBody = SKPhysicsBody(texture: bottomObstacles[i].texture!, size: CGSize(width: bottomObstacles[i].texture!.size().width*0.4, height: self.scene!.size.height*0.75))
@@ -205,9 +204,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       topObstacles[i].zPosition = -2
       topObstacles[i].name = "TopObstacle"
       if i == 0 {
-        topObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: bottomObstacles[i].frame.maxY + self.scene!.frame.height/6)
+        topObstacles[i].position = CGPoint(x: CGFloat(i+1)*((8/39)*self.scene!.frame.height+widthOfCloudPhysicsBody/2 + widthOfSkyscraperPhysicsBody), y: bottomObstacles[i].frame.maxY + self.scene!.frame.height/6)
       } else {
-        topObstacles[i].position.x = CGFloat(i+1)*(self.scene?.size.width)!/2
+        topObstacles[i].position.x = CGFloat(i+1)*((8/39)*self.scene!.frame.height+widthOfCloudPhysicsBody/2 + widthOfSkyscraperPhysicsBody)
         topObstacles[i].position.y = self.scene!.frame.height/4 - self.scene!.frame.height*randomYOffset + vertSpaceBetweenObjects  // topOfSkyscraper + standardSpacing
       }
       topObstacles[i].physicsBody = SKPhysicsBody(texture: topObstacles[i].texture!, size: CGSize(width: topObstacles[i].texture!.size().width*0.4, height: self.scene!.size.height*0.4))
@@ -215,7 +214,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       topObstacles[i].physicsBody?.isDynamic = false
       scene?.addChild(topObstacles[i])
     }
-
   }
   
   private func moveGround() {
@@ -241,8 +239,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     self.enumerateChildNodes(withName: "BottomObstacle") { (node, error) in
       node.position.x -= CGFloat(self.otherObjectsSpeed)
       //if node.position.x < -((self.scene?.size.width)!/2) - node.frame.width/2 {
-      if node.position.x < -((self.scene?.size.width)!) {
-        node.position.x = (self.scene?.size.width)!
+      if node.position.x < -self.scene!.size.width/2 - self.widthOfSkyscraperPhysicsBody/2 {
+        //node.position.x = (self.scene?.size.width)!
+        node.position.x += CGFloat(4)*((8/39)*self.scene!.frame.height+self.widthOfCloudPhysicsBody/2 + self.widthOfSkyscraperPhysicsBody)
         node.position.y = self.scene!.frame.height*(-randomYOffset-1/6)
       }
       if self.player.position.y > (self.scene?.frame.maxY)! && abs(node.position.x - self.player.position.x) <= 2  {
@@ -251,8 +250,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     self.enumerateChildNodes(withName: "TopObstacle") { (node, error) in
       node.position.x -= CGFloat(self.otherObjectsSpeed)
-      if node.position.x < -((self.scene?.size.width)!) {
-        node.position.x = (self.scene?.size.width)!
+      if node.position.x < -((self.scene?.size.width)!/2) - self.widthOfSkyscraperPhysicsBody/2 {
+        //node.position.x = (self.scene?.size.width)!
+        node.position.x += CGFloat(4)*((8/39)*self.scene!.frame.height+self.widthOfCloudPhysicsBody/2 + self.widthOfSkyscraperPhysicsBody)
         node.position.y = self.scene!.frame.height/4 - self.scene!.frame.height*randomYOffset + self.vertSpaceBetweenObjects  // topOfSkyscraper + standardSpacing
         
         
@@ -269,7 +269,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       if abs(node.position.x - self.player.position.x) <= CGFloat(self.otherObjectsSpeed/2) {
         self.score! += 1
         self.scoreLabel?.text = "\(self.score ?? 0)"
-        self.otherObjectsSpeed += 0.04
+        self.otherObjectsSpeed += 0.06
       }
     }
   }
@@ -363,10 +363,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     if !isGamePaused {
       guard sender.view != nil else { return }
       if sender.direction == .up {
-        playerYVelocity = 19.5 + Double(score!)*0.13
+        playerYVelocity = 29.25 + Double(score!)*0.195
       }
       if sender.direction == .down {
-        playerYVelocity = -19.5 - Double(score!)*0.13
+        playerYVelocity = -29.25 - Double(score!)*0.195
       }
     }
   }
