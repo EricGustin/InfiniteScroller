@@ -30,6 +30,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   private var playerTextureArray = [SKTexture]()
   
   private var topOfGroundY: CGFloat!
+  private var vertSpaceBetweenObjects: CGFloat!
   
   private var scoreLabel: UILabel?
   private var score: Int?
@@ -46,6 +47,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       playerTextureArray.append(SKTexture(imageNamed: "frame-\(i).png"))
     }
     topOfGroundY = 6*(self.scene?.size.height)!/14
+    vertSpaceBetweenObjects = self.scene!.size.height/6
     physicsWorld.gravity = .zero
     setUpNodes()
     setUpSubviews()
@@ -142,7 +144,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     for i in 0..<2 {
       let groundImage = SKSpriteNode(imageNamed: "ground@4x")
       groundImage.name = "Ground"
-      groundImage.size = CGSize(width: (self.scene?.size.width)!, height: (self.scene?.size.height)!/7)
+      groundImage.size = CGSize(width: (self.scene?.size.width)!, height: 0)
       groundImage.anchorPoint = CGPoint(x: 0.5, y: 0.5)
       groundImage.zPosition = -1
       groundImage.position = CGPoint(x: CGFloat(i)*groundImage.size.width, y: -self.frame.size.height/2 + self.scene!.size.height/28)
@@ -173,40 +175,45 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   
   private func createObstacles() {
     for i in 0...3 {
-      let randomYScale = CGFloat.random(in: -1/8...3/8)
+      //let randomYScale = CGFloat.random(in: -1/8...3/8)
+      let randomYOffset = CGFloat.random(in: 0...0.5)
       
-      topObstacles.append(SKSpriteNode(imageNamed: "upsideDownTube@4x"))
-      topObstacles[i].xScale = 1.75
-      topObstacles[i].size = CGSize(width: topObstacles[i].frame.width, height: (self.scene?.frame.height)!)
-      topObstacles[i].yScale = 0.75
-      topObstacles[i].physicsBody?.isDynamic = false
-      topObstacles[i].zPosition = -2
-      topObstacles[i].name = "TopObstacle"
-      if i == 0 {
-        topObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: self.scene!.frame.maxY - self.scene!.frame.height*0.125 + self.scene!.frame.height/12)
-      } else {
-        topObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: self.scene!.frame.maxY - self.scene!.frame.height*randomYScale + self.scene!.frame.height/12 + self.scene!.frame.height/14)
-      }
-      topObstacles[i].physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: topObstacles[i].frame.width/6, height: topObstacles[i].frame.height))
-      topObstacles[i].physicsBody?.affectedByGravity = false
-      topObstacles[i].physicsBody?.isDynamic = false
-      scene?.addChild(topObstacles[i])
       
       bottomObstacles.append(SKSpriteNode(imageNamed: "skyscraper@4x"))
       bottomObstacles[i].xScale = 0.4
-     bottomObstacles[i].size = CGSize(width: bottomObstacles[i].frame.width, height: (self.scene?.size.height)!)
+      bottomObstacles[i].size = CGSize(width: bottomObstacles[i].frame.width, height: (self.scene?.size.height)!)
       bottomObstacles[i].yScale = 0.75
       bottomObstacles[i].zPosition = -2
       bottomObstacles[i].name = "BottomObstacle"
       if i == 0 {
         bottomObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: self.scene!.frame.minY + self.scene!.frame.height*0.125 - self.scene!.frame.height/12)
       } else {
-        bottomObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: self.scene!.frame.minY + self.scene!.frame.height*(0.25-randomYScale) - self.scene!.frame.height/12 + self.scene!.frame.height/14)
+//        bottomObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: self.scene!.frame.minY + self.scene!.frame.height*(0.25-randomYScale) - self.scene!.frame.height/12 + self.scene!.frame.height/14)
+        bottomObstacles[i].position.x = CGFloat(i+1)*(self.scene?.size.width)!/2
+        bottomObstacles[i].position.y = self.scene!.frame.height*(-randomYOffset-1/6)
       }
       bottomObstacles[i].physicsBody = SKPhysicsBody(texture: bottomObstacles[i].texture!, size: CGSize(width: bottomObstacles[i].texture!.size().width*0.4, height: self.scene!.size.height*0.75))
       bottomObstacles[i].physicsBody?.affectedByGravity = false
       bottomObstacles[i].physicsBody?.isDynamic = false
       scene?.addChild(bottomObstacles[i])
+      
+      topObstacles.append(SKSpriteNode(imageNamed: "cloud@4x"))
+      topObstacles[i].xScale = 0.4
+      topObstacles[i].size = CGSize(width: topObstacles[i].frame.width, height: (self.scene?.frame.height)!)
+      topObstacles[i].yScale = 0.4
+      topObstacles[i].physicsBody?.isDynamic = false
+      topObstacles[i].zPosition = -2
+      topObstacles[i].name = "TopObstacle"
+      if i == 0 {
+        topObstacles[i].position = CGPoint(x: CGFloat(i+1)*(self.scene?.size.width)!/2, y: bottomObstacles[i].frame.maxY + self.scene!.frame.height/6)
+      } else {
+        topObstacles[i].position.x = CGFloat(i+1)*(self.scene?.size.width)!/2
+        topObstacles[i].position.y = self.scene!.frame.height/4 - self.scene!.frame.height*randomYOffset + vertSpaceBetweenObjects  // topOfSkyscraper + standardSpacing
+      }
+      topObstacles[i].physicsBody = SKPhysicsBody(texture: topObstacles[i].texture!, size: CGSize(width: topObstacles[i].texture!.size().width*0.4, height: self.scene!.size.height*0.4))
+      topObstacles[i].physicsBody?.affectedByGravity = false
+      topObstacles[i].physicsBody?.isDynamic = false
+      scene?.addChild(topObstacles[i])
     }
 
   }
@@ -230,12 +237,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   }
   
   private func moveObstacles() {
-    let randomYScale = CGFloat.random(in: -1/8...3/8)
+    let randomYOffset = CGFloat.random(in: 0...0.5)
     self.enumerateChildNodes(withName: "BottomObstacle") { (node, error) in
       node.position.x -= CGFloat(self.otherObjectsSpeed)
-      if node.position.x < -((self.scene?.size.width)!/2) - node.frame.width/2 {
+      //if node.position.x < -((self.scene?.size.width)!/2) - node.frame.width/2 {
+      if node.position.x < -((self.scene?.size.width)!) {
         node.position.x = (self.scene?.size.width)!
-        node.position.y = self.scene!.frame.minY + self.scene!.frame.height*(0.25-randomYScale) - self.scene!.frame.height/12 + self.scene!.frame.height/14
+        node.position.y = self.scene!.frame.height*(-randomYOffset-1/6)
       }
       if self.player.position.y > (self.scene?.frame.maxY)! && abs(node.position.x - self.player.position.x) <= 2  {
         self.collision(between: self.player, object: node)
@@ -243,9 +251,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     self.enumerateChildNodes(withName: "TopObstacle") { (node, error) in
       node.position.x -= CGFloat(self.otherObjectsSpeed)
-      if node.position.x < -((self.scene?.size.width)!/2) - node.frame.width/2 {
+      if node.position.x < -((self.scene?.size.width)!) {
         node.position.x = (self.scene?.size.width)!
-        node.position.y = self.scene!.frame.maxY - self.scene!.frame.height*randomYScale + self.scene!.frame.height/12 + self.scene!.frame.height/14
+        node.position.y = self.scene!.frame.height/4 - self.scene!.frame.height*randomYOffset + self.vertSpaceBetweenObjects  // topOfSkyscraper + standardSpacing
+        
         
       }
     }
