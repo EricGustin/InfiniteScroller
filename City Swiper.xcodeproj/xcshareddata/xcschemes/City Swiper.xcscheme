@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FAD5464424C7DF3600D7BE78"
-               BuildableName = "Swipey Bird.app"
-               BlueprintName = "Swipey Bird"
-               ReferencedContainer = "container:Swipey Bird.xcodeproj">
+               BuildableName = "City Swiper.app"
+               BlueprintName = "City Swiper"
+               ReferencedContainer = "container:City Swiper.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FAD5464424C7DF3600D7BE78"
-            BuildableName = "Swipey Bird.app"
-            BlueprintName = "Swipey Bird"
-            ReferencedContainer = "container:Swipey Bird.xcodeproj">
+            BuildableName = "City Swiper.app"
+            BlueprintName = "City Swiper"
+            ReferencedContainer = "container:City Swiper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FAD5464424C7DF3600D7BE78"
-            BuildableName = "Swipey Bird.app"
-            BlueprintName = "Swipey Bird"
-            ReferencedContainer = "container:Swipey Bird.xcodeproj">
+            BuildableName = "City Swiper.app"
+            BlueprintName = "City Swiper"
+            ReferencedContainer = "container:City Swiper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

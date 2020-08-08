@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_Swipey_BirdVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_Swipey_BirdVersionString[];
+FOUNDATION_EXPORT double Pods_City_SwiperVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_City_SwiperVersionString[];
 

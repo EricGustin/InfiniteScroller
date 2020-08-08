@@ -7,16 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		243ED02625B7C30F87879A86 /* Pods_Swipey_Bird.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2524CCE4F813CFD1A4F5361 /* Pods_Swipey_Bird.framework */; };
+		64C297FB034B7905CE8DA93A /* Pods_City_Swiper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC8F1F8F673336297F4B0233 /* Pods_City_Swiper.framework */; };
 		FAA276AB24CF6AFC0056EDF1 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */; };
 		FAA276D124D2227C0056EDF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAA276D024D2227C0056EDF1 /* GoogleService-Info.plist */; };
 		FAA276D324D2353B0056EDF1 /* HowToPlayPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA276D224D2353B0056EDF1 /* HowToPlayPopup.swift */; };
 		FAA276D524D272FB0056EDF1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA276D424D272FB0056EDF1 /* StoreKit.framework */; };
-		FAA276D724D278BB0056EDF1 /* IAP_ProductIDs.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAA276D624D278BB0056EDF1 /* IAP_ProductIDs.plist */; };
-		FAA276D924D279850056EDF1 /* IAPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA276D824D279850056EDF1 /* IAPManager.swift */; };
-		FAA276E024D4A7D20056EDF1 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA276DF24D4A7D20056EDF1 /* ViewModel.swift */; };
-		FAA276E224D4A7DD0056EDF1 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA276E124D4A7DD0056EDF1 /* Model.swift */; };
-		FAA276E424D4A80E0056EDF1 /* SettingsManageable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA276E324D4A80E0056EDF1 /* SettingsManageable.swift */; };
 		FAD5464924C7DF3600D7BE78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5464824C7DF3600D7BE78 /* AppDelegate.swift */; };
 		FAD5464B24C7DF3600D7BE78 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAD5464A24C7DF3600D7BE78 /* GameScene.sks */; };
 		FAD5464D24C7DF3600D7BE78 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAD5464C24C7DF3600D7BE78 /* Actions.sks */; };
@@ -33,19 +28,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3B5C5E40ABAF918ECB9DAB8C /* Pods-Swipey Bird.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipey Bird.debug.xcconfig"; path = "Target Support Files/Pods-Swipey Bird/Pods-Swipey Bird.debug.xcconfig"; sourceTree = "<group>"; };
-		A5543A6A5C376873B9A71A51 /* Pods-Swipey Bird.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Swipey Bird.release.xcconfig"; path = "Target Support Files/Pods-Swipey Bird/Pods-Swipey Bird.release.xcconfig"; sourceTree = "<group>"; };
-		D2524CCE4F813CFD1A4F5361 /* Pods_Swipey_Bird.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Swipey_Bird.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0568B3CE47300883E1660690 /* Pods-City Swiper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-City Swiper.release.xcconfig"; path = "Target Support Files/Pods-City Swiper/Pods-City Swiper.release.xcconfig"; sourceTree = "<group>"; };
+		F8156D6B1CA0EFB6C05F2F68 /* Pods-City Swiper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-City Swiper.debug.xcconfig"; path = "Target Support Files/Pods-City Swiper/Pods-City Swiper.debug.xcconfig"; sourceTree = "<group>"; };
 		FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		FAA276D024D2227C0056EDF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAA276D224D2353B0056EDF1 /* HowToPlayPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayPopup.swift; sourceTree = "<group>"; };
 		FAA276D424D272FB0056EDF1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
-		FAA276D624D278BB0056EDF1 /* IAP_ProductIDs.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = IAP_ProductIDs.plist; sourceTree = "<group>"; };
-		FAA276D824D279850056EDF1 /* IAPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPManager.swift; sourceTree = "<group>"; };
-		FAA276DF24D4A7D20056EDF1 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		FAA276E124D4A7DD0056EDF1 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		FAA276E324D4A80E0056EDF1 /* SettingsManageable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManageable.swift; sourceTree = "<group>"; };
-		FAD5464524C7DF3600D7BE78 /* Swipey Bird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Swipey Bird.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAD5464524C7DF3600D7BE78 /* City Swiper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "City Swiper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAD5464824C7DF3600D7BE78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAD5464A24C7DF3600D7BE78 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		FAD5464C24C7DF3600D7BE78 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -60,6 +49,7 @@
 		FAD5466E24C93D1D00D7BE78 /* Bubblegum.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bubblegum.ttf; sourceTree = "<group>"; };
 		FAD5467024C94B6B00D7BE78 /* GameOverPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverPopup.swift; sourceTree = "<group>"; };
 		FAD5467224C971AF00D7BE78 /* GameStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatus.swift; sourceTree = "<group>"; };
+		FC8F1F8F673336297F4B0233 /* Pods_City_Swiper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_City_Swiper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +59,7 @@
 			files = (
 				FAA276D524D272FB0056EDF1 /* StoreKit.framework in Frameworks */,
 				FAA276AB24CF6AFC0056EDF1 /* GameKit.framework in Frameworks */,
-				243ED02625B7C30F87879A86 /* Pods_Swipey_Bird.framework in Frameworks */,
+				64C297FB034B7905CE8DA93A /* Pods_City_Swiper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,8 +69,8 @@
 		B55AFF9A96B948C6B5C1B5AF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B5C5E40ABAF918ECB9DAB8C /* Pods-Swipey Bird.debug.xcconfig */,
-				A5543A6A5C376873B9A71A51 /* Pods-Swipey Bird.release.xcconfig */,
+				F8156D6B1CA0EFB6C05F2F68 /* Pods-City Swiper.debug.xcconfig */,
+				0568B3CE47300883E1660690 /* Pods-City Swiper.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -90,26 +80,15 @@
 			children = (
 				FAA276D424D272FB0056EDF1 /* StoreKit.framework */,
 				FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */,
-				D2524CCE4F813CFD1A4F5361 /* Pods_Swipey_Bird.framework */,
+				FC8F1F8F673336297F4B0233 /* Pods_City_Swiper.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		FAA276DE24D4A7A30056EDF1 /* IAP */ = {
-			isa = PBXGroup;
-			children = (
-				FAA276D824D279850056EDF1 /* IAPManager.swift */,
-				FAA276DF24D4A7D20056EDF1 /* ViewModel.swift */,
-				FAA276E124D4A7DD0056EDF1 /* Model.swift */,
-				FAA276E324D4A80E0056EDF1 /* SettingsManageable.swift */,
-			);
-			path = IAP;
 			sourceTree = "<group>";
 		};
 		FAD5463C24C7DF3600D7BE78 = {
 			isa = PBXGroup;
 			children = (
-				FAD5464724C7DF3600D7BE78 /* Swipey Bird */,
+				FAD5464724C7DF3600D7BE78 /* City Swiper */,
 				FAD5464624C7DF3600D7BE78 /* Products */,
 				FAA276A924CF6AFC0056EDF1 /* Frameworks */,
 				B55AFF9A96B948C6B5C1B5AF /* Pods */,
@@ -119,15 +98,14 @@
 		FAD5464624C7DF3600D7BE78 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FAD5464524C7DF3600D7BE78 /* Swipey Bird.app */,
+				FAD5464524C7DF3600D7BE78 /* City Swiper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FAD5464724C7DF3600D7BE78 /* Swipey Bird */ = {
+		FAD5464724C7DF3600D7BE78 /* City Swiper */ = {
 			isa = PBXGroup;
 			children = (
-				FAA276DE24D4A7A30056EDF1 /* IAP */,
 				FAD5466924C935D200D7BE78 /* Fonts */,
 				FAD5466724C8CF2100D7BE78 /* playerFlying.atlas */,
 				FAD5464824C7DF3600D7BE78 /* AppDelegate.swift */,
@@ -140,12 +118,11 @@
 				FAD5465724C7DF3800D7BE78 /* LaunchScreen.storyboard */,
 				FAD5465A24C7DF3800D7BE78 /* Info.plist */,
 				FAA276D024D2227C0056EDF1 /* GoogleService-Info.plist */,
-				FAA276D624D278BB0056EDF1 /* IAP_ProductIDs.plist */,
 				FAD5467024C94B6B00D7BE78 /* GameOverPopup.swift */,
 				FAA276D224D2353B0056EDF1 /* HowToPlayPopup.swift */,
 				FAD5467224C971AF00D7BE78 /* GameStatus.swift */,
 			);
-			path = "Swipey Bird";
+			path = "City Swiper";
 			sourceTree = "<group>";
 		};
 		FAD5466924C935D200D7BE78 /* Fonts */ = {
@@ -160,23 +137,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FAD5464424C7DF3600D7BE78 /* Swipey Bird */ = {
+		FAD5464424C7DF3600D7BE78 /* City Swiper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FAD5465D24C7DF3800D7BE78 /* Build configuration list for PBXNativeTarget "Swipey Bird" */;
+			buildConfigurationList = FAD5465D24C7DF3800D7BE78 /* Build configuration list for PBXNativeTarget "City Swiper" */;
 			buildPhases = (
-				3BCF9FA1EBA9420C46D55691 /* [CP] Check Pods Manifest.lock */,
+				02A8F577C2A972F0144216CD /* [CP] Check Pods Manifest.lock */,
 				FAD5464124C7DF3600D7BE78 /* Sources */,
 				FAD5464224C7DF3600D7BE78 /* Frameworks */,
 				FAD5464324C7DF3600D7BE78 /* Resources */,
-				01B2D58B13F59F79DFC13CC2 /* [CP] Embed Pods Frameworks */,
+				823A039BB7632F4B0A51E0E5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Swipey Bird";
+			name = "City Swiper";
 			productName = SideScroller;
-			productReference = FAD5464524C7DF3600D7BE78 /* Swipey Bird.app */;
+			productReference = FAD5464524C7DF3600D7BE78 /* City Swiper.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -194,7 +171,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FAD5464024C7DF3600D7BE78 /* Build configuration list for PBXProject "Swipey Bird" */;
+			buildConfigurationList = FAD5464024C7DF3600D7BE78 /* Build configuration list for PBXProject "City Swiper" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -207,7 +184,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FAD5464424C7DF3600D7BE78 /* Swipey Bird */,
+				FAD5464424C7DF3600D7BE78 /* City Swiper */,
 			);
 		};
 /* End PBXProject section */
@@ -223,7 +200,6 @@
 				FAD5465624C7DF3800D7BE78 /* Assets.xcassets in Resources */,
 				FAD5465924C7DF3800D7BE78 /* LaunchScreen.storyboard in Resources */,
 				FAD5466D24C93D0F00D7BE78 /* Cartoon cookies.ttf in Resources */,
-				FAA276D724D278BB0056EDF1 /* IAP_ProductIDs.plist in Resources */,
 				FAD5464D24C7DF3600D7BE78 /* Actions.sks in Resources */,
 				FAD5466F24C93D1D00D7BE78 /* Bubblegum.ttf in Resources */,
 				FAD5466824C8CF2100D7BE78 /* playerFlying.atlas in Resources */,
@@ -233,24 +209,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		01B2D58B13F59F79DFC13CC2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Swipey Bird/Pods-Swipey Bird-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Swipey Bird/Pods-Swipey Bird-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Swipey Bird/Pods-Swipey Bird-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		3BCF9FA1EBA9420C46D55691 /* [CP] Check Pods Manifest.lock */ = {
+		02A8F577C2A972F0144216CD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -265,11 +224,28 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Swipey Bird-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-City Swiper-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		823A039BB7632F4B0A51E0E5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-City Swiper/Pods-City Swiper-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-City Swiper/Pods-City Swiper-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-City Swiper/Pods-City Swiper-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -279,15 +255,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAA276E224D4A7DD0056EDF1 /* Model.swift in Sources */,
-				FAA276D924D279850056EDF1 /* IAPManager.swift in Sources */,
 				FAD5467124C94B6B00D7BE78 /* GameOverPopup.swift in Sources */,
 				FAD5464F24C7DF3600D7BE78 /* GameScene.swift in Sources */,
 				FAD5467324C971AF00D7BE78 /* GameStatus.swift in Sources */,
-				FAA276E424D4A80E0056EDF1 /* SettingsManageable.swift in Sources */,
 				FAD5465124C7DF3600D7BE78 /* GameViewController.swift in Sources */,
 				FAA276D324D2353B0056EDF1 /* HowToPlayPopup.swift in Sources */,
-				FAA276E024D4A7D20056EDF1 /* ViewModel.swift in Sources */,
 				FAD5464924C7DF3600D7BE78 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,20 +402,20 @@
 		};
 		FAD5465E24C7DF3800D7BE78 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B5C5E40ABAF918ECB9DAB8C /* Pods-Swipey Bird.debug.xcconfig */;
+			baseConfigurationReference = F8156D6B1CA0EFB6C05F2F68 /* Pods-City Swiper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X6KK3Y5QZJ;
-				INFOPLIST_FILE = "Swipey Bird/Info.plist";
+				INFOPLIST_FILE = "City Swiper/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.eric.SwipeyBird;
-				PRODUCT_NAME = "Swipey Bird";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eric.CitySwiper;
+				PRODUCT_NAME = "City Swiper";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -451,20 +423,20 @@
 		};
 		FAD5465F24C7DF3800D7BE78 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A5543A6A5C376873B9A71A51 /* Pods-Swipey Bird.release.xcconfig */;
+			baseConfigurationReference = 0568B3CE47300883E1660690 /* Pods-City Swiper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X6KK3Y5QZJ;
-				INFOPLIST_FILE = "Swipey Bird/Info.plist";
+				INFOPLIST_FILE = "City Swiper/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
-				PRODUCT_BUNDLE_IDENTIFIER = com.eric.SwipeyBird;
-				PRODUCT_NAME = "Swipey Bird";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eric.CitySwiper;
+				PRODUCT_NAME = "City Swiper";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -473,7 +445,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FAD5464024C7DF3600D7BE78 /* Build configuration list for PBXProject "Swipey Bird" */ = {
+		FAD5464024C7DF3600D7BE78 /* Build configuration list for PBXProject "City Swiper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FAD5465B24C7DF3800D7BE78 /* Debug */,
@@ -482,7 +454,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FAD5465D24C7DF3800D7BE78 /* Build configuration list for PBXNativeTarget "Swipey Bird" */ = {
+		FAD5465D24C7DF3800D7BE78 /* Build configuration list for PBXNativeTarget "City Swiper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FAD5465E24C7DF3800D7BE78 /* Debug */,
