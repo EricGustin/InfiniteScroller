@@ -19,7 +19,7 @@ class GameViewController: UIViewController, GADBannerViewDelegate {
   //  Gamecenter variables
   var gcEnabled = Bool()
   var gcDefaultLeaderBoard = String()
-  let LEADERBOARD_ID = "com.eric.SwipeyBird"
+  let LEADERBOARD_ID = "com.eric.CitySwiper"
   
   override func viewDidLoad() {
     super.viewDidLoad()
