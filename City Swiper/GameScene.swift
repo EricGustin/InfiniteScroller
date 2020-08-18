@@ -13,7 +13,7 @@ import GameKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
   
-  let LEADERBOARD_ID = "com.eric.SwipeyBird"
+  let LEADERBOARD_ID = "com.eric.CitySwiper"
   
   private var background = [SKSpriteNode]()
   private var player: SKSpriteNode!
