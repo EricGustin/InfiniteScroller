@@ -44,6 +44,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   private var questionMarkButton: UIButton?
   //private var noAdsButton: UIButton?
   
+  private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+  
   private var howToPlayPopup: HowToPlayPopup?
   
   override func didMove(to view: SKView) {
@@ -58,6 +60,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     setUpSubviews()
     setUpGestureRecognizers()
     createObstacles()
+    
+    // Check if this is the first time the app has been launched.
+    if (!appDelegate.hasAlreadyLaunched) {
+      appDelegate.setHasAlreadyLaunchedToTrue()
+      questionMarkButtonClicked()
+    }
   }
   
   override func update(_ currentTime: TimeInterval) {
@@ -147,7 +155,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     player = SKSpriteNode(imageNamed: playerTextureAtlas.textureNames[0])
     player.name = "Player"
     player.zPosition = 1
-    player.setScale(CGFloat(0.2))
+    player.setScale(CGFloat(0.25))
     player.position = CGPoint(x: -(scene?.frame.width)!/8, y: 0)
     
     let offsetX = player.size.width * player.anchorPoint.x

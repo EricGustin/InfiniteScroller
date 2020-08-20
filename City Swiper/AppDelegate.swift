@@ -13,13 +13,21 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var window: UIWindow?
+  var hasAlreadyLaunched: Bool!
 
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     FirebaseApp.configure()
     GADMobileAds.sharedInstance().start(completionHandler: nil)
+    
+    hasAlreadyLaunched = UserDefaults.standard.bool(forKey: "hasAlreadyLaunched")
     return true
+  }
+  
+  func setHasAlreadyLaunchedToTrue() {
+    UserDefaults.standard.set(true, forKey: "hasAlreadyLaunched")
+    hasAlreadyLaunched = true
   }
 
   func applicationWillResignActive(_ application: UIApplication) {
