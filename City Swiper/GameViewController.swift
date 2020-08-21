@@ -48,7 +48,7 @@ class GameViewController: UIViewController, GADBannerViewDelegate {
     view?.addSubview(bannerView)
     bannerView.centerXAnchor.constraint(equalTo: view!.centerXAnchor).isActive = true
     bannerView.bottomAnchor.constraint(equalTo: view!.bottomAnchor).isActive = true
-    //bannerView.adUnitID = "ca-app-pub-2778876616385267/7296308658"
+    bannerView.adUnitID = "ca-app-pub-2778876616385267/7296308658"
     bannerView.rootViewController = self
     bannerView.load(GADRequest())
     bannerView.delegate = self

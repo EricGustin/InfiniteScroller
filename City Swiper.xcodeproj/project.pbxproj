@@ -11,7 +11,6 @@
 		FAA276AB24CF6AFC0056EDF1 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */; };
 		FAA276D124D2227C0056EDF1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAA276D024D2227C0056EDF1 /* GoogleService-Info.plist */; };
 		FAA276D324D2353B0056EDF1 /* HowToPlayPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA276D224D2353B0056EDF1 /* HowToPlayPopup.swift */; };
-		FAA276D524D272FB0056EDF1 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA276D424D272FB0056EDF1 /* StoreKit.framework */; };
 		FAD5464924C7DF3600D7BE78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD5464824C7DF3600D7BE78 /* AppDelegate.swift */; };
 		FAD5464B24C7DF3600D7BE78 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAD5464A24C7DF3600D7BE78 /* GameScene.sks */; };
 		FAD5464D24C7DF3600D7BE78 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = FAD5464C24C7DF3600D7BE78 /* Actions.sks */; };
@@ -33,7 +32,6 @@
 		FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		FAA276D024D2227C0056EDF1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FAA276D224D2353B0056EDF1 /* HowToPlayPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayPopup.swift; sourceTree = "<group>"; };
-		FAA276D424D272FB0056EDF1 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		FAD5464524C7DF3600D7BE78 /* City Swiper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "City Swiper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAD5464824C7DF3600D7BE78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAD5464A24C7DF3600D7BE78 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -57,7 +55,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAA276D524D272FB0056EDF1 /* StoreKit.framework in Frameworks */,
 				FAA276AB24CF6AFC0056EDF1 /* GameKit.framework in Frameworks */,
 				64C297FB034B7905CE8DA93A /* Pods_City_Swiper.framework in Frameworks */,
 			);
@@ -78,7 +75,6 @@
 		FAA276A924CF6AFC0056EDF1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FAA276D424D272FB0056EDF1 /* StoreKit.framework */,
 				FAA276AA24CF6AFC0056EDF1 /* GameKit.framework */,
 				FC8F1F8F673336297F4B0233 /* Pods_City_Swiper.framework */,
 			);
